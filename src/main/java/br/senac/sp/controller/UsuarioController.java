@@ -18,7 +18,7 @@ import java.util.Date;
  */
 public class UsuarioController {
 
-    public static boolean cadastrar(String email, String senha, String nome, String cpf, Date nascimento, int id_endereco, String logradouro, String cep, String numero, String bairro, String uf, String cidade) {
+    public static boolean cadastrar(String email, String senha, String nome, String cpf, Date nascimento, String logradouro, String cep, String numero, String bairro, String uf, String cidade) {
         Usuario usuario = new Usuario();
 
         usuario.setNome(nome);
@@ -26,12 +26,12 @@ public class UsuarioController {
         usuario.setNascimento(nascimento);
         usuario.setEmail(email);
         usuario.setSenha(senha);
-        usuario.setEndereco(new Endereco(id_endereco, logradouro, cep, numero, bairro, uf, cidade));
+        usuario.setEndereco(new Endereco(logradouro, cep, numero, bairro, uf, cidade));
         
         return UsuarioDAO.adicionar(usuario);
     }
 
-    public static boolean alterar(String uuid, String email, String senha, String nome, String cpf, Date nascimento, int id_endereco, String logradouro, String cep, String numero, String bairro, String uf, String cidade) {
+    public static boolean alterar(String uuid, String email, String senha, String nome, String cpf, Date nascimento, String logradouro, String cep, String numero, String bairro, String uf, String cidade) {
         Usuario usuario = new Usuario(uuid);
 
         usuario.setNome(nome);
@@ -39,7 +39,7 @@ public class UsuarioController {
         usuario.setNascimento(nascimento);
         usuario.setEmail(email);
         usuario.setSenha(senha);
-        usuario.setEndereco(new Endereco(id_endereco, logradouro, cep, numero, bairro, uf, cidade));
+        usuario.setEndereco(new Endereco(logradouro, cep, numero, bairro, uf, cidade));
         
         return UsuarioDAO.atualizar(usuario);
     }

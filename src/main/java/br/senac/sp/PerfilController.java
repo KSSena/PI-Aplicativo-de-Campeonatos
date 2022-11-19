@@ -9,10 +9,14 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+
 import java.time.ZoneId;
 import java.util.Date;
 
-public class SecondaryController{
+public class PerfilController{
+    private String uuid;
+    @FXML ImageView imageViewFoto;
     @FXML TextField textFieldEmail;
     @FXML PasswordField passwordFieldSenha;
     @FXML TextField textFieldNome;
@@ -25,14 +29,9 @@ public class SecondaryController{
     @FXML ComboBox<String> comboBoxUF;
     @FXML TextField textFieldCidade;
     @FXML Button buttonCadastrar;
-    
-    @FXML
-    private void switchToPrimary() throws IOException {
-        App.setRoot("login");
-    }
 
     public void cadastrar(){
-        UsuarioController.cadastrar(textFieldEmail.getText(), passwordFieldSenha.getText(), textFieldNome.getText(), 
+        UsuarioController.alterar(uuid ,textFieldEmail.getText(), passwordFieldSenha.getText(), textFieldNome.getText(), 
             textFieldCPF.getText(), Date.from(datePickerNascimento.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()), textFieldLogradouro.getText(), textFieldCEP.getText(),
             textFieldNumero.getText(), textFieldBairro.getText(), comboBoxUF.getSelectionModel().getSelectedItem(), textFieldCidade.getText());
         System.out.println("Funcionou");    

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="375.0" type="Pane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.senac.sp.PerfilController">
+   <children>
+      <Text layoutX="47.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Perfil de Usuario" wrappingWidth="95.13671875" />
+      <Text layoutX="26.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" />
+      <TextField fx:id="textFieldEmail" layoutX="23.0" layoutY="171.0" prefHeight="25.0" prefWidth="330.0" promptText="E-mail" />
+      <PasswordField fx:id="passwordFieldSenha" layoutX="23.0" layoutY="204.0" prefHeight="25.0" prefWidth="330.0" promptText="Senha" />
+      <Text layoutX="23.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informações Pessoais" />
+      <TextField fx:id="textFieldNome" layoutX="23.0" layoutY="287.0" prefHeight="25.0" prefWidth="330.0" promptText="Nome" />
+      <TextField fx:id="textFieldCPF" layoutX="23.0" layoutY="325.0" prefHeight="25.0" prefWidth="330.0" promptText="CPF" />
+      <DatePicker fx:id="datePickerNascimento" layoutX="22.0" layoutY="358.0" prefHeight="25.0" prefWidth="330.0" promptText="Data de Nascimento" />
+      <Text layoutX="22.0" layoutY="432.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Endereco" />
+      <TextField fx:id="textFieldLogradouro" layoutX="22.0" layoutY="446.0" prefHeight="25.0" prefWidth="330.0" promptText="Logradouro" />
+      <TextField fx:id="textFieldBairro" layoutX="23.0" layoutY="513.0" prefHeight="25.0" prefWidth="330.0" promptText="Bairro" />
+      <TextField fx:id="textFieldCEP" layoutX="22.0" layoutY="480.0" prefHeight="25.0" prefWidth="179.0" promptText="CEP" />
+      <TextField fx:id="textFieldNumero" layoutX="205.0" layoutY="480.0" prefHeight="25.0" prefWidth="148.0" promptText="Número" />
+      <Button fx:id="buttonCadastrar" layoutX="74.0" layoutY="614.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="39.0" prefWidth="217.0" text="Salvar" />
+      <TextField fx:id="textFieldCidade" layoutX="205.0" layoutY="554.0" prefHeight="25.0" prefWidth="148.0" promptText="Cidade" />
+      <ComboBox fx:id="comboBoxUF" layoutX="23.0" layoutY="555.0" prefHeight="26.0" prefWidth="171.0" promptText="UF" />
+      <ImageView fitHeight="93.0" fitWidth="139.0" layoutX="113.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</fx:root>

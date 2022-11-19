@@ -1,5 +1,6 @@
 package br.senac.sp;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -40,5 +41,9 @@ public class PrimaryController implements Initializable {
         alerta.show();
     }
 
-
+    @FXML
+    private void switchToSecondary() throws IOException {
+        App.setRoot("cadastro");
+        
+    }
 }

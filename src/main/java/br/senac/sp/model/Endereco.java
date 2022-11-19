@@ -18,6 +18,17 @@ public class Endereco {
     private String uf;
     private String cidade;
 
+    
+
+    public Endereco(String logradouro, String cep, String numero, String bairro, String uf, String cidade) {
+        this.logradouro = logradouro;
+        this.cep = cep;
+        this.numero = numero;
+        this.bairro = bairro;
+        this.uf = uf;
+        this.cidade = cidade;
+    }
+
     public Endereco(int id, String logradouro, String cep, String numero, String bairro, String uf, String cidade) {
         this.id = id;
         this.logradouro = logradouro;
