@@ -15,19 +15,21 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
-public class PrimaryController implements Initializable {
+public class TelaLoginController implements Initializable {
     @FXML TextField textFieldLogin;
     @FXML PasswordField passwordFieldSenha;
     @FXML Button botaoLogin;
     @FXML Text textCadastrar;
     @FXML ImageView imageViewLogo;
 
-    public void logar(){
-        String uuid = LoginController.logar(textFieldLogin.getText(), passwordFieldSenha.getText());
-        if(uuid == null){
-            mostrarMensagem(uuid , AlertType.ERROR);
-       }else
-            mostrarMensagem(uuid , AlertType.CONFIRMATION);
+    public void logar() throws IOException{
+        App.uuid = LoginController.logar(textFieldLogin.getText(), passwordFieldSenha.getText());
+        if(App.uuid == null){
+            mostrarMensagem(App.uuid , AlertType.ERROR);
+       }else{
+            mostrarMensagem(App.uuid , AlertType.CONFIRMATION);
+            switchToTelaInicio();
+        }  
     }
     
     @Override
@@ -42,8 +44,14 @@ public class PrimaryController implements Initializable {
     }
 
     @FXML
-    private void switchToSecondary() throws IOException {
+    private void switchToCadastro() throws IOException {
         App.setRoot("cadastro");
-        
     }
+
+    @FXML
+    private void switchToTelaInicio() throws IOException {
+        App.setRoot("telaInicio");
+    }
+
+
 }

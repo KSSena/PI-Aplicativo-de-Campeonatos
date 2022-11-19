@@ -1,7 +1,5 @@
 package br.senac.sp;
 
-import java.io.IOException;
-
 import br.senac.sp.controller.UsuarioController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -30,10 +28,9 @@ public class PerfilController{
     @FXML TextField textFieldCidade;
     @FXML Button buttonCadastrar;
 
-    public void cadastrar(){
-        UsuarioController.alterar(uuid ,textFieldEmail.getText(), passwordFieldSenha.getText(), textFieldNome.getText(), 
+    public void alterar(){
+        UsuarioController.alterar(App.uuid ,textFieldEmail.getText(), passwordFieldSenha.getText(), textFieldNome.getText(), 
             textFieldCPF.getText(), Date.from(datePickerNascimento.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()), textFieldLogradouro.getText(), textFieldCEP.getText(),
             textFieldNumero.getText(), textFieldBairro.getText(), comboBoxUF.getSelectionModel().getSelectedItem(), textFieldCidade.getText());
-        System.out.println("Funcionou");    
     }
 }

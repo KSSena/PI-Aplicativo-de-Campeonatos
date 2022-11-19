@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.senac.sp.SecondaryController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.senac.sp.CadastroController">
    <children>
       <Text layoutX="83.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastro" wrappingWidth="95.13671875" />
       <Text layoutX="31.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" />

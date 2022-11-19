@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.senac.sp.PrimaryController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.senac.sp.TelaLoginController">
    <children>
       <Text layoutX="24.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Senha" wrappingWidth="132.13671875">
          <font>
@@ -28,7 +28,7 @@
          </children>
       </Group>
       <Text layoutX="133.0" layoutY="549.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Esqueci minha senha" />
-      <Text fx:id="textCadastrar" layoutX="154.0" layoutY="524.0" onMouseClicked="#switchToSecondary" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastrar-se" />
+      <Text fx:id="textCadastrar" layoutX="154.0" layoutY="524.0" onMouseClicked="#switchToCadastro" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastrar-se" />
       <Text layoutX="105.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bem vindo a Rinha" wrappingWidth="164.771484375">
          <font>
             <Font size="20.0" />

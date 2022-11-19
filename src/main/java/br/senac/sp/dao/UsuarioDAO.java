@@ -282,7 +282,7 @@ public class UsuarioDAO {
         try {
             conexao = Conexao.abrirConexao();
             comandoSQL = conexao.prepareStatement("SELECT usuario.nome, login.email FROM login "
-                    + "INNER JOIN usuario ON usuario.fk_login_uuid = login.uuid WHERE login.uuid;");
+                    + "INNER JOIN usuario ON usuario.fk_login_uuid = login.uuid WHERE login.uuid = ?;");
 
             comandoSQL.setString(1, uuid);
 
