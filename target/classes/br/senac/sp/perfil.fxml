@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="375.0" type="Pane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.senac.sp.PerfilController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.senac.sp.PerfilController">
    <children>
       <Text layoutX="47.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Perfil de Usuario" wrappingWidth="95.13671875" />
       <Text layoutX="26.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" />
@@ -29,4 +29,4 @@
       <ComboBox fx:id="comboBoxUF" layoutX="23.0" layoutY="555.0" prefHeight="26.0" prefWidth="171.0" promptText="UF" />
       <ImageView fitHeight="93.0" fitWidth="139.0" layoutX="113.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" />
    </children>
-</fx:root>
+</Pane>

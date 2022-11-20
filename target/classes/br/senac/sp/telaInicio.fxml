@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.ImageView?>
@@ -9,12 +10,15 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.senac.sp.TelaInicioController">
    <children>
-      <Pane layoutX="21.0" layoutY="44.0" prefHeight="106.0" prefWidth="333.0">
+      <Pane fx:id="paneCartao" layoutX="21.0" layoutY="44.0" onMouseClicked="#switchToPerfil" prefHeight="106.0" prefWidth="333.0">
          <children>
             <Text fx:id="textNome" layoutX="160.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fulano de tal" />
             <ImageView fitHeight="99.0" fitWidth="134.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" />
             <Text fx:id="textEmail" layoutX="160.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email@Email.com" wrappingWidth="123.13671875" />
          </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Pane>
       <Accordion layoutX="21.0" layoutY="210.0" prefHeight="192.0" prefWidth="333.0">
          <panes>

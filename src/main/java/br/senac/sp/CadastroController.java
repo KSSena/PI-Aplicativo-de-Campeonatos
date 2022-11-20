@@ -50,4 +50,6 @@ public class CadastroController{
         alerta.setContentText(mensagem);
         alerta.show();
     }
+
+
 }
