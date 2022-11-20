@@ -25,9 +25,9 @@ public class TelaLoginController implements Initializable {
     public void logar() throws IOException{
         App.uuid = LoginController.logar(textFieldLogin.getText(), passwordFieldSenha.getText());
         if(App.uuid == null){
-            mostrarMensagem(App.uuid , AlertType.ERROR);
+            mostrarMensagem("Email ou senha incorretos." , AlertType.ERROR);
        }else{
-            mostrarMensagem(App.uuid , AlertType.CONFIRMATION);
+            mostrarMensagem("Login realizado com sucesso." , AlertType.CONFIRMATION);
             switchToTelaInicio();
         }  
     }

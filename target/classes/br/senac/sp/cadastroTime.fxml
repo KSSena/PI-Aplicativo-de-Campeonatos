@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextArea?>
@@ -10,7 +11,10 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.senac.sp.CadastroTimeController">
    <children>
-      <Text layoutX="29.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastro de time" wrappingWidth="136.13671875" />
+      <Text layoutX="29.0" layoutY="21.0" onMouseClicked="#switchToTelaInicio" strokeType="OUTSIDE" strokeWidth="0.0" text="Voltar" wrappingWidth="42.13671875">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Text>
       <ImageView fitHeight="108.0" fitWidth="148.0" layoutX="114.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" />
       <TextField fx:id="textFieldNome" layoutX="40.0" layoutY="155.0" prefHeight="25.0" prefWidth="296.0" promptText="Nome do time" />
       <Text layoutX="40.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade de Membros" />

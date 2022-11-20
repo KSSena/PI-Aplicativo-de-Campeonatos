@@ -14,6 +14,7 @@ import java.io.IOException;
 public class App extends Application {
     public static String uuid;
     public static int idTime;
+    public static int idCampeonato;
     private static Scene scene;
 
     @Override

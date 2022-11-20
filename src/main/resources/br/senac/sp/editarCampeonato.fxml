@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.senac.sp.EditarCampeonatoController">
+   <children>
+      <Text layoutX="21.0" layoutY="27.0" onMouseClicked="#switchToCampeonato" strokeType="OUTSIDE" strokeWidth="0.0" text="Voltar" wrappingWidth="37.13671875" />
+      <ImageView fitHeight="108.0" fitWidth="148.0" layoutX="114.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField fx:id="textFieldNome" layoutX="40.0" layoutY="155.0" prefHeight="25.0" prefWidth="296.0" promptText="Nome do campeonato" />
+      <Text layoutX="40.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade de Participantes" />
+      <Spinner fx:id="spinnerQuantidade" editable="true" layoutX="40.0" layoutY="226.0" prefHeight="25.0" prefWidth="296.0" />
+      <TextField fx:id="textFieldCategoria" layoutX="40.0" layoutY="271.0" prefHeight="25.0" prefWidth="296.0" promptText="Categoria" />
+      <TextArea fx:id="textAreaDescricao" layoutX="40.0" layoutY="334.0" prefHeight="114.0" prefWidth="296.0" />
+      <Text layoutX="40.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição" />
+      <Button fx:id="buttonAlterar" layoutX="74.0" layoutY="525.0" mnemonicParsing="false" onAction="#alterar" prefHeight="25.0" prefWidth="227.0" text="Editar Campeonato" />
+      <DatePicker fx:id="datePickerInicio" layoutX="42.0" layoutY="475.0" prefHeight="25.0" prefWidth="136.0" />
+      <DatePicker fx:id="datePickerFim" layoutX="196.0" layoutY="475.0" prefHeight="25.0" prefWidth="136.0" />
+      <Text layoutX="42.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Inicio:" />
+      <Text layoutX="196.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Fim:" />
+   </children>
+</Pane>

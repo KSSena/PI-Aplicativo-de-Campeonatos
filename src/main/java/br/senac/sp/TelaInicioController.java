@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import br.senac.sp.controller.EquipeController;
 import br.senac.sp.controller.UsuarioController;
 import br.senac.sp.model.Usuario;
 import javafx.fxml.FXML;
@@ -47,6 +46,17 @@ public class TelaInicioController implements Initializable{
     private void switchToTime() throws IOException {
         App.idTime = 1;
         App.setRoot("time");
-    }    
+    }   
+    
+    @FXML
+    private void switchToCadastroCampeonato() throws IOException {
+        App.setRoot("cadastroCampeonato");
+    }  
+    
+    @FXML
+    private void switchToCampeonato() throws IOException {
+        App.idCampeonato = 1;
+        App.setRoot("campeonato");
+    }   
     
 }

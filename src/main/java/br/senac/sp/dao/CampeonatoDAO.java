@@ -30,7 +30,7 @@ public class CampeonatoDAO {
             conexao = Conexao.abrirConexao();
 
             comandoSQL1 = conexao.prepareStatement("INSERT INTO campeonato(nome, qtd_times, categoria, descricao, data_inicial, data_final ) VALUES (?,?, ?, ?, ?, ?)");
-            comandoSQL2 = conexao.prepareStatement("INSERT INTO Organiza(fk_campeonato_id, fk_login_uuid) VALUES (LAST_INSERT_ID(),?)");
+            comandoSQL2 = conexao.prepareStatement("INSERT INTO organiza(fk_campeonato_id, fk_login_uuid) VALUES (LAST_INSERT_ID(),?)");
 
             comandoSQL1.setString(1, campeonato.getNome());
             comandoSQL1.setInt(2, campeonato.getQtdTimes());
@@ -72,7 +72,7 @@ public class CampeonatoDAO {
         try {
             if (verificarOrganizador(campeonato.getId(), uuidOrganizador)) {
                 conexao = Conexao.abrirConexao();
-                comandoSQL1 = conexao.prepareStatement("UPDATE usuario SET nome = ?, qtd_times = ?, categoria = ?, descricao = ?, data_inicial = ?, data_final = ? WHERE id = ? ");
+                comandoSQL1 = conexao.prepareStatement("UPDATE campeonato SET nome = ?, qtd_times = ?, categoria = ?, descricao = ?, data_inicial = ?, data_final = ? WHERE id = ? ");
 
                 comandoSQL1.setString(1, campeonato.getNome());
                 comandoSQL1.setInt(2, campeonato.getQtdTimes());
@@ -456,7 +456,7 @@ public class CampeonatoDAO {
 
         try {
             conexao = Conexao.abrirConexao();
-            comandoSQL = conexao.prepareStatement("SELECT * FROM organiza WHERE fk_campeonato_id = ? AND fk_login_uuid");
+            comandoSQL = conexao.prepareStatement("SELECT * FROM organiza WHERE fk_campeonato_id = ? AND fk_login_uuid = ?");
 
             comandoSQL.setInt(1, idCampeonato);
             comandoSQL.setString(2, uuid);

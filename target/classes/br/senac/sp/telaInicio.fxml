@@ -29,12 +29,16 @@
          </cursor>
       </Text>
       <Text layoutX="28.0" layoutY="446.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Campeonatos" />
-      <Text layoutX="329.0" layoutY="452.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+" wrappingWidth="18.47021484375">
+      <Text layoutX="329.0" layoutY="452.0" onMouseClicked="#switchToCadastroCampeonato" strokeType="OUTSIDE" strokeWidth="0.0" text="+" wrappingWidth="18.47021484375">
          <font>
             <Font size="27.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Text>
       <Button layoutX="21.0" layoutY="219.0" mnemonicParsing="false" onAction="#switchToTime" prefHeight="30.0" prefWidth="333.0" text="Time 1" />
       <Button layoutX="21.0" layoutY="264.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="333.0" text="Time 2" />
+      <Button layoutX="21.0" layoutY="459.0" mnemonicParsing="false" onAction="#switchToCampeonato" prefHeight="30.0" prefWidth="333.0" text="Campeonato 1" />
    </children>
 </Pane>
