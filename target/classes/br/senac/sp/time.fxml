@@ -1,26 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.senac.sp.TimeController">
    <children>
-      <Text layoutX="29.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="73.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" />
-      <TextField layoutX="29.0" layoutY="201.0" prefHeight="25.0" prefWidth="307.0" promptText="Time" />
-      <TextArea layoutX="29.0" layoutY="266.0" prefHeight="107.0" prefWidth="307.0" />
+      <Text layoutX="29.0" layoutY="35.0" onMouseClicked="#switchToTelaInicio" strokeType="OUTSIDE" strokeWidth="0.0" text="Voltar" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="73.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" />
+      <TextArea fx:id="textAreaDescricao" editable="false" layoutX="29.0" layoutY="266.0" prefHeight="107.0" prefWidth="307.0" />
       <Text layoutX="31.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição" />
-      <Text layoutX="31.0" layoutY="418.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade de Membros" />
-      <TextField layoutX="188.0" layoutY="401.0" />
-      <Text layoutX="112.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Categoria" />
-      <TextField layoutX="188.0" layoutY="433.0" />
+      <Text fx:id="textQuantidade" layoutX="31.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade de Membros: " wrappingWidth="307.0" />
+      <Text fx:id="textCategoria" layoutX="29.0" layoutY="422.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Categoria: " wrappingWidth="307.0" />
       <Accordion layoutX="29.0" layoutY="499.0" prefHeight="107.0" prefWidth="202.0">
         <panes>
           <TitledPane animated="false" text="untitled 1">
@@ -42,5 +39,15 @@
       </Accordion>
       <Text layoutX="143.0" layoutY="485.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Integrantes" />
       <Text layoutX="138.0" layoutY="611.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Competições" />
+      <Text fx:id="textNome" layoutX="105.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Time">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Text>
+      <Text layoutX="315.0" layoutY="27.0" onMouseClicked="#switchToEditarTime" strokeType="OUTSIDE" strokeWidth="0.0" text="Editar">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Text>
    </children>
 </Pane>

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import br.senac.sp.controller.EquipeController;
 import br.senac.sp.controller.UsuarioController;
 import br.senac.sp.model.Usuario;
 import javafx.fxml.FXML;
@@ -17,6 +18,7 @@ public class TelaInicioController implements Initializable{
     @FXML Text textNome;
     @FXML Text textEmail;
     @FXML Pane paneCartao;
+    @FXML Text textCriarTime;
     Usuario usuario;
 
     public void carregar(){
@@ -35,5 +37,16 @@ public class TelaInicioController implements Initializable{
     private void switchToPerfil() throws IOException {
         App.setRoot("perfil");
     }
+
+    @FXML
+    private void switchToCadastroTime() throws IOException {
+        App.setRoot("cadastroTime");
+    }
+    
+    @FXML
+    private void switchToTime() throws IOException {
+        App.idTime = 1;
+        App.setRoot("time");
+    }    
     
 }

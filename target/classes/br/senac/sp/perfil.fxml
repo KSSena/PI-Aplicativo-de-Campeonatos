@@ -11,7 +11,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.senac.sp.PerfilController">
    <children>
-      <Text layoutX="47.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Perfil de Usuario" wrappingWidth="95.13671875" />
+      <Text layoutX="23.0" layoutY="25.0" onKeyPressed="#switchToTelaInicio" onMouseClicked="#switchToTelaInicio" strokeType="OUTSIDE" strokeWidth="0.0" text="Voltar" wrappingWidth="41.13671875" />
       <Text layoutX="26.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" />
       <TextField fx:id="textFieldEmail" layoutX="23.0" layoutY="171.0" prefHeight="25.0" prefWidth="330.0" promptText="E-mail" />
       <PasswordField fx:id="passwordFieldSenha" layoutX="23.0" layoutY="204.0" prefHeight="25.0" prefWidth="330.0" promptText="Senha" />

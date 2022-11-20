@@ -69,12 +69,13 @@ public class EquipeDAO {
 
         try {
             conexao = Conexao.abrirConexao();
-            comandoSQL1 = conexao.prepareStatement("UPDATE usuario SET nome = ?, qtd_membros = ?, categoria = ?, descricao = ? WHERE id = ? ");
+            comandoSQL1 = conexao.prepareStatement("UPDATE equipe SET nome = ?, qtd_membros = ?, categoria = ?, descricao = ? WHERE id = ? ");
 
             comandoSQL1.setString(1, equipe.getNome());
             comandoSQL1.setInt(2, equipe.getQtdMembros());
             comandoSQL1.setString(3, equipe.getCategoria());
             comandoSQL1.setString(4, equipe.getDescricao());
+            comandoSQL1.setInt(5, equipe.getId());
 
             int linhasAfetadas = comandoSQL1.executeUpdate();
 

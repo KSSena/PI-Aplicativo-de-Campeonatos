@@ -13,6 +13,7 @@ import java.io.IOException;
  */
 public class App extends Application {
     public static String uuid;
+    public static int idTime;
     private static Scene scene;
 
     @Override
