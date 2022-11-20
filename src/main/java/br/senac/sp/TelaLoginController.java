@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import br.senac.sp.controller.LoginController;
+import br.senac.sp.dao.LoginDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -23,7 +23,7 @@ public class TelaLoginController implements Initializable {
     @FXML ImageView imageViewLogo;
 
     public void logar() throws IOException{
-        App.uuid = LoginController.logar(textFieldLogin.getText(), passwordFieldSenha.getText());
+        App.uuid = LoginDAO.login(textFieldLogin.getText(), passwordFieldSenha.getText());
         if(App.uuid == null){
             mostrarMensagem("Email ou senha incorretos." , AlertType.ERROR);
        }else{

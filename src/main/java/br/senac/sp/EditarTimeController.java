@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import br.senac.sp.controller.EquipeController;
+import br.senac.sp.dao.CampeonatoDAO;
+import br.senac.sp.dao.EquipeDAO;
+import br.senac.sp.dao.UsuarioDAO;
 import br.senac.sp.model.Equipe;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,24 +25,29 @@ public class EditarTimeController implements Initializable{
     @FXML Button buttonAlterar;
 
     public void carregar(int id){
-        Equipe equipe = EquipeController.carregarTime(id);
+        Equipe equipe = EquipeDAO.carregarEquipe(id);
+        equipe.setListaMembros(UsuarioDAO.carregarListaMembros(id));
+        equipe.setListaCampeonatos(CampeonatoDAO.carregarListaCampeonatos(id));
+
         textFieldNome.setText(equipe.getNome());
         //spinnerQuantidade.set
         textFieldCategoria.setText(equipe.getCategoria());
         textAreaDescricao.setText(equipe.getDescricao());
     }
 
-    public void alterar(){
-        if(EquipeController.alterar(App.idTime, textFieldNome.getText(), 1, textFieldCategoria.getText(), textAreaDescricao.getText(), App.uuid)){
+    public void alterar() throws IOException {
+        Equipe equipe = new Equipe(App.idTime);
+
+        equipe.setNome(textFieldNome.getText());
+        equipe.setQtdMembros(1);
+        equipe.setCategoria(textFieldCategoria.getText());
+        equipe.setDescricao(textAreaDescricao.getText());
+
+        if(EquipeDAO.atualizar(equipe)){
             mostrarMensagem("Alteração realizada com sucesso", AlertType.CONFIRMATION);
-            try {
-                switchToTime();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }else{
+            switchToTime();
+        }else
             mostrarMensagem("Falha ao salvar alteração", AlertType.ERROR);
-        }
     }
 
     @Override

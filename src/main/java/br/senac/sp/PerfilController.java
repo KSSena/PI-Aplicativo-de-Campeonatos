@@ -1,6 +1,9 @@
 package br.senac.sp;
 
-import br.senac.sp.controller.UsuarioController;
+import br.senac.sp.dao.CampeonatoDAO;
+import br.senac.sp.dao.EquipeDAO;
+import br.senac.sp.dao.UsuarioDAO;
+import br.senac.sp.model.Endereco;
 import br.senac.sp.model.Usuario;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -34,25 +37,36 @@ public class PerfilController implements Initializable{
     @FXML TextField textFieldCidade;
     @FXML Button buttonCadastrar;
 
-    public void alterar(){
-        if(UsuarioController.alterar(App.uuid ,textFieldEmail.getText(), passwordFieldSenha.getText(), textFieldNome.getText(), 
-            textFieldCPF.getText(), Date.from(datePickerNascimento.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()), textFieldLogradouro.getText(), textFieldCEP.getText(),
-            textFieldNumero.getText(), textFieldBairro.getText(), comboBoxUF.getSelectionModel().getSelectedItem(), textFieldCidade.getText())){
-                mostrarMensagem("Alteração realizada com sucesso", AlertType.CONFIRMATION);
-                try {
-                    switchToTelaInicio();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+
+    public void alterar() throws IOException {
+        Usuario usuario = new Usuario(App.uuid);
+        Endereco endereco = new Endereco();
+
+        usuario.setNome(textFieldNome.getText());
+        usuario.setCpf(textFieldCPF.getText());
+        usuario.setNascimento(Date.from(datePickerNascimento.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+        usuario.setEmail(textFieldEmail.getText());
+        usuario.setSenha(passwordFieldSenha.getText());
+        endereco.setLogradouro(textFieldLogradouro.getText());
+        endereco.setCep(textFieldCEP.getText());
+        endereco.setNumero(textFieldNumero.getText());
+        endereco.setUf(comboBoxUF.getSelectionModel().getSelectedItem());
+        endereco.setCidade(textFieldCidade.getText());
+        endereco.setBairro(textFieldBairro.getText());
+        usuario.setEndereco(endereco);
         
-            }else{
-                mostrarMensagem("Falha ao salvar alteração", AlertType.ERROR);
-            }
-          
+        if(UsuarioDAO.atualizar(usuario)){
+            mostrarMensagem("Alteração realizada com sucesso", AlertType.CONFIRMATION);
+            switchToTelaInicio();
+        }else
+            mostrarMensagem("Falha ao salvar alteração", AlertType.ERROR);
     }
 
     public void carregar(){
-        Usuario usuario = UsuarioController.carregarPerfil(App.uuid);
+        Usuario usuario = UsuarioDAO.carregarCartao(App.uuid);
+        usuario.setListaEquipes(EquipeDAO.carregarListaEquipes(App.uuid));
+        usuario.setListaCampeonato(CampeonatoDAO.carregarListaCampeonatos(usuario.getListaEquipes()));
+
         textFieldEmail.setText(usuario.getEmail());
         textFieldNome.setText(usuario.getNome());
         textFieldCPF.setText(usuario.getCpf());

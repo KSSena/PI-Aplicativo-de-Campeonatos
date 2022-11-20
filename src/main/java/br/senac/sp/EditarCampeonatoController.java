@@ -6,7 +6,7 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-import br.senac.sp.controller.CampeonatoController;
+import br.senac.sp.dao.CampeonatoDAO;
 import br.senac.sp.model.Campeonato;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,20 +28,13 @@ public class EditarCampeonatoController implements Initializable{
     @FXML Button buttonAlterar;
 
     public void carregar(int id){
-        Campeonato campeonato = CampeonatoController.carregarCampeonato(id);
+        Campeonato campeonato = CampeonatoDAO.carregarCampeonato(id);
+        campeonato.setListaEquipes(CampeonatoDAO.carregarEquipesParticipantes(id));
+        
         textFieldNome.setText(campeonato.getNome());
         //spinnerQuantidade.set
         textFieldCategoria.setText(campeonato.getCategoria());
         textAreaDescricao.setText(campeonato.getDescricao());
-    }
-
-    public void alterar() throws IOException{
-        if(CampeonatoController.alterar(App.idCampeonato ,textFieldNome.getText(), 0, textFieldCategoria.getText(), textAreaDescricao.getText(), Date.from(datePickerInicio.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()), Date.from(datePickerFim.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()), App.uuid)){
-            mostrarMensagem("Alteração de campeonato efetuado com sucesso", AlertType.CONFIRMATION);
-            switchToCampeonato();
-        }else{
-            mostrarMensagem("Falha ao alterar campeonato.", AlertType.ERROR);
-        }
     }
 
     public void mostrarMensagem(String mensagem, AlertType tipo){
@@ -59,5 +52,25 @@ public class EditarCampeonatoController implements Initializable{
     public void initialize(URL arg0, ResourceBundle arg1) {
         carregar(App.idCampeonato);
         
+    }
+
+    public void alterar() throws IOException {
+        Campeonato campeonato;
+        //Id
+        campeonato = new Campeonato(App.idCampeonato);
+
+        //Dados Basicos
+        campeonato.setNome(textFieldNome.getText());
+        campeonato.setQtdTimes(0);
+        campeonato.setCategoria(textFieldCategoria.getText());
+        campeonato.setDescricao(textAreaDescricao.getText());
+        campeonato.setDataInicial(Date.from(datePickerInicio.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+        campeonato.setDataFinal(Date.from(datePickerFim.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+
+        if(CampeonatoDAO.atualizar(campeonato, App.uuid)){
+            mostrarMensagem("Alteração de campeonato efetuado com sucesso", AlertType.CONFIRMATION);
+            switchToCampeonato();
+        }else
+            mostrarMensagem("Falha ao alterar campeonato.", AlertType.ERROR);
     }
 }

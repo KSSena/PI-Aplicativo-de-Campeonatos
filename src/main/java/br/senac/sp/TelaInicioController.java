@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import br.senac.sp.controller.UsuarioController;
+import br.senac.sp.dao.CampeonatoDAO;
+import br.senac.sp.dao.EquipeDAO;
+import br.senac.sp.dao.UsuarioDAO;
 import br.senac.sp.model.Usuario;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,11 +20,12 @@ public class TelaInicioController implements Initializable{
     @FXML Text textEmail;
     @FXML Pane paneCartao;
     @FXML Text textCriarTime;
-    Usuario usuario;
 
     public void carregar(){
-        System.out.println(App.uuid);
-        usuario = UsuarioController.carregarTelaInicial(App.uuid);
+        Usuario usuario = UsuarioDAO.carregarCartao(App.uuid);
+        usuario.setListaEquipes(EquipeDAO.carregarListaEquipes(App.uuid));
+        usuario.setListaCampeonato(CampeonatoDAO.carregarListaCampeonatos(usuario.getListaEquipes()));
+
         textNome.setText(usuario.getNome());
         textEmail.setText(usuario.getEmail());
     }

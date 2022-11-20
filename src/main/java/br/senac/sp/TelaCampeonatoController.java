@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import br.senac.sp.controller.CampeonatoController;
+
+import br.senac.sp.dao.CampeonatoDAO;
 import br.senac.sp.model.Campeonato;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,7 +19,9 @@ public class TelaCampeonatoController implements Initializable{
     @FXML Text textCategoria;
 
     public void carregar(int id){
-        Campeonato campeonato = CampeonatoController.carregarCampeonato(id);
+        Campeonato campeonato = CampeonatoDAO.carregarCampeonato(id);
+        campeonato.setListaEquipes(CampeonatoDAO.carregarEquipesParticipantes(id));
+        
         textNome.setText(campeonato.getNome());
         textQuantidade.setText("Quantidade Máxima de Equipes: " + campeonato.getQtdTimes());
         textCategoria.setText("Categoria: " + campeonato.getCategoria());

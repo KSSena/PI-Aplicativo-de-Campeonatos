@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.senac.sp.controller;
+package br.senac.sp;
 
 import br.senac.sp.dao.CampeonatoDAO;
 import br.senac.sp.dao.EquipeDAO;

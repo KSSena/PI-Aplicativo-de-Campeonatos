@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.time.ZoneId;
 import java.util.Date;
 
-import br.senac.sp.controller.CampeonatoController;
+import br.senac.sp.dao.CampeonatoDAO;
+import br.senac.sp.model.Campeonato;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -23,15 +24,6 @@ public class CadastroCampeonatoController {
     @FXML DatePicker datePickerFim;
     @FXML Button buttonCriar;
 
-    public void cadastrar() throws IOException{
-        if(CampeonatoController.criar(textFieldNome.getText(), 0, textFieldCategoria.getText(), textAreaDescricao.getText(), Date.from(datePickerInicio.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()), Date.from(datePickerFim.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()), App.uuid)){
-            mostrarMensagem("Cadastro de campeonato efetuado com sucesso", AlertType.CONFIRMATION);
-            switchToTelaInicio();
-        }else{
-            mostrarMensagem("Falha ao cadastrar campeonato.", AlertType.CONFIRMATION);
-        }
-    }
-
     @FXML
     private void switchToTelaInicio() throws IOException {
         App.setRoot("telaInicio");
@@ -42,4 +34,23 @@ public class CadastroCampeonatoController {
         alerta.setContentText(mensagem);
         alerta.show();
     }
+
+    public void cadastrar() throws IOException {
+        Campeonato campeonato = new Campeonato();
+
+        campeonato.setNome(textFieldNome.getText());
+        campeonato.setQtdTimes(0);
+        campeonato.setCategoria(textFieldCategoria.getText());
+        campeonato.setDescricao(textAreaDescricao.getText());
+        campeonato.setDataInicial(Date.from(datePickerInicio.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+        campeonato.setDataFinal(Date.from(datePickerFim.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+
+        if(CampeonatoDAO.adicionar(campeonato, App.uuid)){
+            mostrarMensagem("Cadastro de campeonato efetuado com sucesso", AlertType.CONFIRMATION);
+            switchToTelaInicio();
+        }else{
+        
+        }
+    }
+    
 }

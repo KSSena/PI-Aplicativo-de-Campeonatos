@@ -2,7 +2,9 @@ package br.senac.sp;
 
 import java.io.IOException;
 
-import br.senac.sp.controller.UsuarioController;
+import br.senac.sp.dao.UsuarioDAO;
+import br.senac.sp.model.Endereco;
+import br.senac.sp.model.Usuario;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -34,21 +36,35 @@ public class CadastroController{
         App.setRoot("login");
     }
 
-    public void cadastrar() throws IOException{
-        if(UsuarioController.cadastrar(textFieldEmail.getText(), passwordFieldSenha.getText(), textFieldNome.getText(), 
-            textFieldCPF.getText(), Date.from(datePickerNascimento.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()), textFieldLogradouro.getText(), textFieldCEP.getText(),
-            textFieldNumero.getText(), textFieldBairro.getText(), comboBoxUF.getSelectionModel().getSelectedItem(), textFieldCidade.getText())){
-            mostrarMensagem("Cadastro Efetuado com Sucesso", AlertType.CONFIRMATION);
-            switchToPrimary();
-        }else{
-            mostrarMensagem("Falha ao cadastrar", AlertType.ERROR);
-        }
-    }
-
     public void mostrarMensagem(String mensagem, AlertType tipo){
         var alerta = new Alert(tipo);
         alerta.setContentText(mensagem);
         alerta.show();
+    }
+
+    public void cadastrar() throws IOException {
+        Usuario usuario = new Usuario();
+        Endereco endereco = new Endereco();
+
+        usuario.setNome(textFieldNome.getText());
+        usuario.setCpf(textFieldCPF.getText());
+        usuario.setNascimento(Date.from(datePickerNascimento.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+        usuario.setEmail(textFieldEmail.getText());
+        usuario.setSenha(passwordFieldSenha.getText());
+        endereco.setLogradouro(textFieldLogradouro.getText());
+        endereco.setCep(textFieldCEP.getText());
+        endereco.setNumero(textFieldNumero.getText());
+        endereco.setUf(comboBoxUF.getSelectionModel().getSelectedItem());
+        endereco.setCidade(textFieldCidade.getText());
+        endereco.setBairro(textFieldBairro.getText());
+        usuario.setEndereco(endereco);
+        
+        if(UsuarioDAO.adicionar(usuario)){
+            mostrarMensagem("Cadastro Efetuado com Sucesso", AlertType.CONFIRMATION);
+            switchToPrimary();
+        }else{
+            mostrarMensagem("Falha ao cadastrar", AlertType.ERROR);
+        };
     }
 
 

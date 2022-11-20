@@ -2,7 +2,8 @@ package br.senac.sp;
 
 import java.io.IOException;
 
-import br.senac.sp.controller.EquipeController;
+import br.senac.sp.dao.EquipeDAO;
+import br.senac.sp.model.Equipe;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -18,16 +19,6 @@ public class CadastroTimeController {
     @FXML TextArea textAreaDescricao;
     @FXML Button buttonCriar;
 
-
-    public void cadastrar() throws IOException{
-        if(EquipeController.criar(textFieldNome.getText(), 1, textFieldCategorias.getText(), textAreaDescricao.getText(), App.uuid)){
-            mostrarMensagem("Criação de Equipe Efetuada com Sucesso", AlertType.CONFIRMATION);
-            switchToTelaInicio();
-        }else{
-            mostrarMensagem("Falha ao cadastrar", AlertType.ERROR);
-        }
-    }
-
     public void mostrarMensagem(String mensagem, AlertType tipo){
         var alerta = new Alert(tipo);
         alerta.setContentText(mensagem);
@@ -37,5 +28,20 @@ public class CadastroTimeController {
     @FXML
     private void switchToTelaInicio() throws IOException {
         App.setRoot("telaInicio");
+    }
+
+    public void cadastrar() throws IOException {
+        Equipe equipe = new Equipe();
+
+        equipe.setNome(textFieldNome.getText());
+        equipe.setQtdMembros(1);
+        equipe.setCategoria(textFieldCategorias.getText());
+        equipe.setDescricao(textAreaDescricao.getText());
+
+        if(EquipeDAO.adicionar(equipe, App.uuid)){
+            mostrarMensagem("Criação de Equipe Efetuada com Sucesso", AlertType.CONFIRMATION);
+            switchToTelaInicio();
+        }else
+            mostrarMensagem("Falha ao cadastrar", AlertType.ERROR);
     }
 }
