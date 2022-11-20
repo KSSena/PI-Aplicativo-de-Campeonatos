@@ -5,9 +5,9 @@ import br.senac.sp.dao.EquipeDAO;
 import br.senac.sp.dao.UsuarioDAO;
 import br.senac.sp.model.Endereco;
 import br.senac.sp.model.Usuario;
+import br.senac.sp.utils.MessageFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -56,10 +56,10 @@ public class PerfilController implements Initializable{
         usuario.setEndereco(endereco);
         
         if(UsuarioDAO.atualizar(usuario)){
-            mostrarMensagem("Alteração realizada com sucesso", AlertType.CONFIRMATION);
+            MessageFactory.mostrarMensagem("Alteração realizada com sucesso", AlertType.CONFIRMATION);
             switchToTelaInicio();
         }else
-            mostrarMensagem("Falha ao salvar alteração", AlertType.ERROR);
+            MessageFactory.mostrarMensagem("Falha ao salvar alteração", AlertType.ERROR);
     }
 
     public void carregar(){
@@ -77,12 +77,6 @@ public class PerfilController implements Initializable{
         textFieldBairro.setText(usuario.getEndereco().getBairro());
         //comboBoxUF.setSelectionModel(Sele);
         textFieldCidade.setText(usuario.getEndereco().getCidade());
-    }
-
-    public void mostrarMensagem(String mensagem, AlertType tipo){
-        var alerta = new Alert(tipo);
-        alerta.setContentText(mensagem);
-        alerta.show();
     }
 
     @Override

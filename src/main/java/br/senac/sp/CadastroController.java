@@ -5,8 +5,8 @@ import java.io.IOException;
 import br.senac.sp.dao.UsuarioDAO;
 import br.senac.sp.model.Endereco;
 import br.senac.sp.model.Usuario;
+import br.senac.sp.utils.MessageFactory;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -36,11 +36,6 @@ public class CadastroController{
         App.setRoot("login");
     }
 
-    public void mostrarMensagem(String mensagem, AlertType tipo){
-        var alerta = new Alert(tipo);
-        alerta.setContentText(mensagem);
-        alerta.show();
-    }
 
     public void cadastrar() throws IOException {
         Usuario usuario = new Usuario();
@@ -60,10 +55,10 @@ public class CadastroController{
         usuario.setEndereco(endereco);
         
         if(UsuarioDAO.adicionar(usuario)){
-            mostrarMensagem("Cadastro Efetuado com Sucesso", AlertType.CONFIRMATION);
+            MessageFactory.mostrarMensagem("Cadastro Efetuado com Sucesso", AlertType.CONFIRMATION);
             switchToPrimary();
         }else{
-            mostrarMensagem("Falha ao cadastrar", AlertType.ERROR);
+            MessageFactory.mostrarMensagem("Falha ao cadastrar", AlertType.ERROR);
         };
     }
 

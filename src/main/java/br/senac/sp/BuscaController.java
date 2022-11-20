@@ -14,6 +14,7 @@ import br.senac.sp.model.Busca;
  * @author Kaio
  */
 public class BuscaController {
+    
     public static Busca buscar(String nome) {
         Busca retorno = new Busca();
         retorno.setListaCampeonato(CampeonatoDAO.buscarCampeonatos(nome));

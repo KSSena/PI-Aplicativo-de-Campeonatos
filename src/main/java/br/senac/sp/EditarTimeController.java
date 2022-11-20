@@ -8,11 +8,12 @@ import br.senac.sp.dao.CampeonatoDAO;
 import br.senac.sp.dao.EquipeDAO;
 import br.senac.sp.dao.UsuarioDAO;
 import br.senac.sp.model.Equipe;
+import br.senac.sp.utils.MessageFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
@@ -30,7 +31,8 @@ public class EditarTimeController implements Initializable{
         equipe.setListaCampeonatos(CampeonatoDAO.carregarListaCampeonatos(id));
 
         textFieldNome.setText(equipe.getNome());
-        //spinnerQuantidade.set
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 20, equipe.getQtdMembros());
+        this.spinnerQuantidade.setValueFactory(valueFactory);    
         textFieldCategoria.setText(equipe.getCategoria());
         textAreaDescricao.setText(equipe.getDescricao());
     }
@@ -39,26 +41,20 @@ public class EditarTimeController implements Initializable{
         Equipe equipe = new Equipe(App.idTime);
 
         equipe.setNome(textFieldNome.getText());
-        equipe.setQtdMembros(1);
+        equipe.setQtdMembros(spinnerQuantidade.getValue());
         equipe.setCategoria(textFieldCategoria.getText());
         equipe.setDescricao(textAreaDescricao.getText());
 
         if(EquipeDAO.atualizar(equipe)){
-            mostrarMensagem("Alteração realizada com sucesso", AlertType.CONFIRMATION);
+            MessageFactory.mostrarMensagem("Alteração realizada com sucesso", AlertType.CONFIRMATION);
             switchToTime();
         }else
-            mostrarMensagem("Falha ao salvar alteração", AlertType.ERROR);
+            MessageFactory.mostrarMensagem("Falha ao salvar alteração", AlertType.ERROR);
     }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         carregar(App.idTime);
-    }
-
-    public void mostrarMensagem(String mensagem, AlertType tipo){
-        var alerta = new Alert(tipo);
-        alerta.setContentText(mensagem);
-        alerta.show();
     }
 
     @FXML

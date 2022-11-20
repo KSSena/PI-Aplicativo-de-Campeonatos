@@ -5,9 +5,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import br.senac.sp.dao.LoginDAO;
+import br.senac.sp.utils.MessageFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -25,9 +25,9 @@ public class TelaLoginController implements Initializable {
     public void logar() throws IOException{
         App.uuid = LoginDAO.login(textFieldLogin.getText(), passwordFieldSenha.getText());
         if(App.uuid == null){
-            mostrarMensagem("Email ou senha incorretos." , AlertType.ERROR);
+            MessageFactory.mostrarMensagem("Email ou senha incorretos." , AlertType.ERROR);
        }else{
-            mostrarMensagem("Login realizado com sucesso." , AlertType.CONFIRMATION);
+            MessageFactory.mostrarMensagem("Login realizado com sucesso." , AlertType.CONFIRMATION);
             switchToTelaInicio();
         }  
     }
@@ -35,12 +35,6 @@ public class TelaLoginController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
 
-    }
-
-    public void mostrarMensagem(String mensagem, AlertType tipo){
-        var alerta = new Alert(tipo);
-        alerta.setContentText(mensagem);
-        alerta.show();
     }
 
     @FXML
