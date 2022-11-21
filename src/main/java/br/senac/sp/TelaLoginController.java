@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import br.senac.sp.dao.LoginDAO;
 import br.senac.sp.utils.MessageFactory;
+import br.senac.sp.utils.Validator;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert.AlertType;
@@ -33,8 +34,7 @@ public class TelaLoginController implements Initializable {
     }
     
     @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-
+    public void initialize(URL arg0, ResourceBundle arg1) { 
     }
 
     @FXML
