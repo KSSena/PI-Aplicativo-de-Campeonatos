@@ -9,7 +9,7 @@ import br.senac.sp.utils.MessageFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -33,7 +33,7 @@ public class PerfilController implements Initializable{
     @FXML TextField textFieldCEP;
     @FXML TextField textFieldNumero;
     @FXML TextField textFieldBairro;
-    @FXML ComboBox<String> comboBoxUF;
+    @FXML ChoiceBox<String> choiceBoxUF;
     @FXML TextField textFieldCidade;
     @FXML Button buttonCadastrar;
 
@@ -50,7 +50,7 @@ public class PerfilController implements Initializable{
         endereco.setLogradouro(textFieldLogradouro.getText());
         endereco.setCep(textFieldCEP.getText());
         endereco.setNumero(textFieldNumero.getText());
-        endereco.setUf(comboBoxUF.getSelectionModel().getSelectedItem());
+        endereco.setUf(choiceBoxUF.getSelectionModel().getSelectedItem());
         endereco.setCidade(textFieldCidade.getText());
         endereco.setBairro(textFieldBairro.getText());
         usuario.setEndereco(endereco);
@@ -63,10 +63,7 @@ public class PerfilController implements Initializable{
     }
 
     public void carregar(){
-        Usuario usuario = UsuarioDAO.carregarCartao(App.uuid);
-        usuario.setListaEquipes(EquipeDAO.carregarListaEquipes(App.uuid));
-        usuario.setListaCampeonato(CampeonatoDAO.carregarListaCampeonatos(usuario.getListaEquipes()));
-
+        Usuario usuario = UsuarioDAO.carregarUsuario(App.uuid);
         textFieldEmail.setText(usuario.getEmail());
         textFieldNome.setText(usuario.getNome());
         textFieldCPF.setText(usuario.getCpf());
@@ -75,13 +72,14 @@ public class PerfilController implements Initializable{
         textFieldCEP.setText(usuario.getEndereco().getCep());
         textFieldNumero.setText(usuario.getEndereco().getNumero());
         textFieldBairro.setText(usuario.getEndereco().getBairro());
-        //comboBoxUF.setSelectionModel(Sele);
+        choiceBoxUF.setValue(usuario.getEndereco().getUf());;
         textFieldCidade.setText(usuario.getEndereco().getCidade());
     }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         carregar();
+        choiceBoxUF.getItems().addAll("RO","AC","AM", "RR" ,"SP", "RJ");
     }
 
     @FXML

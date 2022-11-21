@@ -88,5 +88,12 @@ public class Equipe {
     public void setUuidEditor(String uuidEditor) {
         this.uuidEditor = uuidEditor;
     }
+
+    @Override
+    public String toString() {
+        return getNome();
+    }
+
+    
     
 }

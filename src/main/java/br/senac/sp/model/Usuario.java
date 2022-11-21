@@ -22,6 +22,7 @@ public class Usuario {
     private Endereco endereco;
     private ArrayList<Equipe> listaEquipes;
     private ArrayList<Campeonato> listaCampeonato;
+    private boolean editor;
 
     public Usuario() {
     }
@@ -97,6 +98,14 @@ public class Usuario {
 
     public void setListaCampeonato(ArrayList<Campeonato> listaCampeonato) {
         this.listaCampeonato = listaCampeonato;
+    }
+
+    public boolean isEditor() {
+        return editor;
+    }
+
+    public void setEditor(boolean editor) {
+        this.editor = editor;
     }
     
     @Override

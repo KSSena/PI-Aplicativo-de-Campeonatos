@@ -2,6 +2,8 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.ImageView?>
@@ -43,10 +45,12 @@
             <Font size="32.0" />
          </font>
       </Text>
-      <Text layoutX="315.0" layoutY="27.0" onMouseClicked="#switchToEditarCampeonato" strokeType="OUTSIDE" strokeWidth="0.0" text="Editar">
+      <Text fx:id="textEditar" layoutX="315.0" layoutY="27.0" onMouseClicked="#switchToEditarCampeonato" strokeType="OUTSIDE" strokeWidth="0.0" text="Editar">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Text>
+      <Button fx:id="buttonInscreverEquipe" layoutX="210.0" layoutY="616.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" text="Inscrever Equipe" />
+      <ComboBox fx:id="choiceBoxInscrever" layoutX="55.0" layoutY="616.0" prefWidth="150.0" promptText="Seus Times" />
    </children>
 </Pane>

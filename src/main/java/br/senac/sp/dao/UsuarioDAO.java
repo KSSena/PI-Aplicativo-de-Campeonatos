@@ -382,6 +382,7 @@ public class UsuarioDAO {
             while (rs.next()) {
                 Usuario usuario = new Usuario(rs.getString("usuario.fk_login_uuid"));
                 usuario.setNome(rs.getString("usuario.nome"));
+                usuario.setEditor(rs.getBoolean("participa.editor"));
                 retorno.add(usuario);
             }
 

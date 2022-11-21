@@ -30,6 +30,7 @@ public class Validator {
             }
         });
     }
+    
     public static void limitadorSomenteNumeros(final TextField field, int maxLength) {
         field.textProperty().addListener(new ChangeListener<String>() {
             @Override

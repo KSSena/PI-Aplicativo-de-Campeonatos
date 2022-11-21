@@ -484,4 +484,46 @@ public class CampeonatoDAO {
         }
         return retorno;
     }
+
+
+public static ArrayList<Equipe> carregarEquipesAptas(String uuid, int idCampeonato) {
+    ArrayList<Equipe> retorno = new ArrayList<>();
+    ResultSet rs = null;
+    Connection conexao = null;
+    PreparedStatement comandoSQL = null;
+
+    try {
+        conexao = Conexao.abrirConexao();
+        comandoSQL = conexao.prepareStatement("SELECT * FROM equipe INNER JOIN participa ON equipe.id = participa.fk_equipe_id  WHERE  participa.fk_login_uuid = ? AND participa.editor = true AND NOT EXISTS (SELECT fk_equipe_id FROM compete WHERE fk_Campeonato_ID = ?)");
+
+        comandoSQL.setString(1, uuid);
+        comandoSQL.setInt(2, idCampeonato);
+
+        rs = comandoSQL.executeQuery();
+
+        while (rs.next()) {
+            Equipe equipe = new Equipe(rs.getInt("equipe.id"));
+            equipe.setNome(rs.getString("equipe.nome"));
+            retorno.add(equipe);
+        }
+
+    } catch (ClassNotFoundException | SQLException e) {
+        System.out.println(e.getMessage());
+        retorno = null;
+    } finally {
+        try {
+            if (rs != null) {
+                rs.close();
+            }
+            if (comandoSQL != null) {
+                comandoSQL.close();
+            }
+
+            Conexao.fecharConexao();
+
+        } catch (SQLException e) {
+        }
+    }
+    return retorno;
+    }
 }
