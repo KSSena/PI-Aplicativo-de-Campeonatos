@@ -27,7 +27,7 @@ public class TelaLoginController implements Initializable {
         if(App.uuid == null){
             MessageFactory.mostrarMensagem("Email ou senha incorretos." , AlertType.ERROR);
        }else{
-            MessageFactory.mostrarMensagem("Login realizado com sucesso." , AlertType.CONFIRMATION);
+            MessageFactory.mostrarMensagem("Login realizado com sucesso." , AlertType.INFORMATION);
             switchToTelaInicio();
         }  
     }

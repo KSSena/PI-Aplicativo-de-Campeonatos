@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
@@ -12,7 +13,10 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.senac.sp.CadastroCampeonatoController">
    <children>
       <Text layoutX="21.0" layoutY="27.0" onMouseClicked="#switchToTelaInicio" strokeType="OUTSIDE" strokeWidth="0.0" text="Voltar" wrappingWidth="37.13671875" />
-      <ImageView fitHeight="108.0" fitWidth="148.0" layoutX="114.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="108.0" fitWidth="148.0" layoutX="134.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/award-placeholder.png" />
+         </image></ImageView>
       <TextField fx:id="textFieldNome" layoutX="40.0" layoutY="155.0" prefHeight="25.0" prefWidth="296.0" promptText="Nome do campeonato" />
       <Text layoutX="40.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade de Participantes" />
       <Spinner fx:id="spinnerQuantidade" editable="true" layoutX="40.0" layoutY="226.0" prefHeight="25.0" prefWidth="296.0" />

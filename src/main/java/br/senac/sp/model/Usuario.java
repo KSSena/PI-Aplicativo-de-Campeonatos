@@ -109,8 +109,7 @@ public class Usuario {
     }
     
     @Override
-    public String toString(){
-        return "Nome: " + getNome() + "\nCPF: " + getCpf() + "\nData de Nascimento: " + getNascimento() 
-                + "\nEndereco: " + getEndereco().getLogradouro();
+    public String toString() {
+        return getNome();
     }
 }

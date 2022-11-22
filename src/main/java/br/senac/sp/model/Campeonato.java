@@ -98,5 +98,10 @@ public class Campeonato {
     public void setListaEquipes(ArrayList<Equipe> listaEquipes) {
         this.listaEquipes = listaEquipes;
     }
+
+    @Override
+    public String toString() {
+        return getNome();
+    }
     
 }

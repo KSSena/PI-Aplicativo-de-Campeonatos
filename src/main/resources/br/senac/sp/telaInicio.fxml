@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -9,18 +11,34 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.senac.sp.TelaInicioController">
    <children>
+      <ImageView fitHeight="694.0" fitWidth="375.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/trofeu.jpg" />
+         </image>
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+      </ImageView>
+      <ImageView fitHeight="667.0" fitWidth="375.0" opacity="0.84" pickOnBounds="true">
+         <image>
+            <Image url="@images/black.png" />
+         </image>
+      </ImageView>
       <Pane fx:id="paneCartao" layoutX="21.0" layoutY="44.0" onMouseClicked="#switchToPerfil" prefHeight="106.0" prefWidth="333.0">
          <children>
-            <Text fx:id="textNome" layoutX="160.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fulano de tal" />
-            <ImageView fitHeight="99.0" fitWidth="134.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" />
-            <Text fx:id="textEmail" layoutX="160.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email@Email.com" wrappingWidth="123.13671875" />
+            <Text fx:id="textNome" fill="WHITE" layoutX="160.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fulano de tal" />
+            <ImageView fitHeight="99.0" fitWidth="134.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/userIcon.png" />
+               </image></ImageView>
+            <Text fx:id="textEmail" fill="WHITE" layoutX="160.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email@Email.com" wrappingWidth="123.13671875" />
          </children>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Pane>
-      <Text layoutX="21.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Meus Times" />
-      <Text fx:id="textCriarTime" layoutX="338.0" layoutY="196.0" onMouseClicked="#switchToCadastroTime" strokeType="OUTSIDE" strokeWidth="0.0" text="+" wrappingWidth="18.47021484375">
+      <Text fill="WHITE" layoutX="21.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Meus Times" />
+      <Text fx:id="textCriarTime" fill="WHITE" layoutX="338.0" layoutY="196.0" onMouseClicked="#switchToCadastroTime" strokeType="OUTSIDE" strokeWidth="0.0" text="+" wrappingWidth="18.47021484375">
          <font>
             <Font size="27.0" />
          </font>
@@ -28,8 +46,8 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Text>
-      <Text layoutX="28.0" layoutY="446.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Campeonatos" />
-      <Text layoutX="329.0" layoutY="452.0" onMouseClicked="#switchToCadastroCampeonato" strokeType="OUTSIDE" strokeWidth="0.0" text="+" wrappingWidth="18.47021484375">
+      <Text fill="WHITE" layoutX="28.0" layoutY="446.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Campeonatos" />
+      <Text fill="WHITE" layoutX="329.0" layoutY="452.0" onMouseClicked="#switchToCadastroCampeonato" strokeType="OUTSIDE" strokeWidth="0.0" text="+" wrappingWidth="18.47021484375">
          <font>
             <Font size="27.0" />
          </font>
@@ -37,8 +55,8 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Text>
-      <Button layoutX="21.0" layoutY="219.0" mnemonicParsing="false" onAction="#switchToTime" prefHeight="30.0" prefWidth="333.0" text="Time 1" />
-      <Button layoutX="21.0" layoutY="264.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="333.0" text="Time 2" />
-      <Button layoutX="21.0" layoutY="459.0" mnemonicParsing="false" onAction="#switchToCampeonato" prefHeight="30.0" prefWidth="333.0" text="Campeonato 1" />
+      <Text fill="WHITE" layoutX="296.0" layoutY="40.0" onMouseClicked="#switchToBusca" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Buscar" />
+      <ListView fx:id="listViewTimes" layoutX="21.0" layoutY="210.0" onMouseClicked="#switchToTime" prefHeight="192.0" prefWidth="333.0" />
+      <ListView fx:id="listViewCampeonatos" layoutX="21.0" layoutY="462.0" onMouseClicked="#switchToCampeonato" prefHeight="178.0" prefWidth="333.0" />
    </children>
 </Pane>

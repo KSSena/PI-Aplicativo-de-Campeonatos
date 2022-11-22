@@ -5,9 +5,15 @@
  */
 package br.senac.sp;
 
+import java.io.IOException;
+
 import br.senac.sp.dao.CampeonatoDAO;
 import br.senac.sp.dao.EquipeDAO;
-import br.senac.sp.model.Busca;
+import br.senac.sp.model.Campeonato;
+import br.senac.sp.model.Equipe;
+import javafx.fxml.FXML;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 
 /**
  *
@@ -15,11 +21,36 @@ import br.senac.sp.model.Busca;
  */
 public class BuscaController {
     
-    public static Busca buscar(String nome) {
-        Busca retorno = new Busca();
-        retorno.setListaCampeonato(CampeonatoDAO.buscarCampeonatos(nome));
-        retorno.setListaEquipes(EquipeDAO.buscarEquipes(nome));
-        
-        return retorno;
+    @FXML ListView<Campeonato> listViewCampeonatos;
+    @FXML ListView<Equipe> listViewEquipes;
+    @FXML TextField textFieldPesquisa;
+
+    public void buscar() {
+        String pesquisa = textFieldPesquisa.getText();
+        listViewCampeonatos.getItems().setAll(CampeonatoDAO.buscarCampeonatos(pesquisa));
+        listViewEquipes.getItems().setAll(EquipeDAO.buscarEquipes(pesquisa));
     }
+
+    @FXML
+    private void switchToTelaInicio() throws IOException {
+        App.setRoot("telaInicio");
+    }
+
+    @FXML
+    private void switchToTime() throws IOException {   
+        if(listViewEquipes.getSelectionModel().getSelectedItem() != null){
+            int id = listViewEquipes.getSelectionModel().getSelectedItem().getId();
+            App.idTime = id;
+            App.setRoot("time");
+        }
+    }   
+    
+    @FXML
+    private void switchToCampeonato() throws IOException {
+        if(listViewCampeonatos.getSelectionModel().getSelectedItem() != null){
+            int id = listViewCampeonatos.getSelectionModel().getSelectedItem().getId();
+            App.idCampeonato= id;
+            App.setRoot("campeonato");
+        }
+    } 
 }

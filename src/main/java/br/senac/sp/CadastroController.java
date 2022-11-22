@@ -13,6 +13,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.text.Text;
 
 import java.time.ZoneId;
 import java.util.Date;
@@ -30,6 +31,8 @@ public class CadastroController{
     @FXML ComboBox<String> comboBoxUF;
     @FXML TextField textFieldCidade;
     @FXML Button buttonCadastrar;
+    @FXML Text textVoltar;
+
     
     @FXML
     private void switchToPrimary() throws IOException {

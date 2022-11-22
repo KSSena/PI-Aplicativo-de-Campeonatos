@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.senac.sp.BuscaController">
+   <children>
+      <ImageView fitHeight="694.0" fitWidth="375.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/trofeu.jpg" />
+         </image>
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+      </ImageView>
+      <ImageView fitHeight="667.0" fitWidth="375.0" opacity="0.84" pickOnBounds="true">
+         <image>
+            <Image url="@images/black.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="17.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Times" />
+      <Text fill="WHITE" layoutX="20.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Campeonatos" />
+      <TextField fx:id="textFieldPesquisa" layoutX="59.0" layoutY="14.0" prefHeight="25.0" prefWidth="223.0" />
+      <Button layoutX="286.0" layoutY="14.0" mnemonicParsing="false" onAction="#buscar" text="Pesquisar" />
+      <ImageView fitHeight="25.0" fitWidth="27.0" layoutX="20.0" layoutY="14.0" onMouseClicked="#switchToTelaInicio" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/back-arrow.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ListView fx:id="listViewEquipes" layoutX="20.0" layoutY="127.0" onMouseClicked="#switchToTime" prefHeight="134.0" prefWidth="335.0" />
+      <ListView fx:id="listViewCampeonatos" layoutX="20.0" layoutY="304.0" onMouseClicked="#switchToCampeonato" prefHeight="134.0" prefWidth="335.0" />
+   </children>
+</Pane>

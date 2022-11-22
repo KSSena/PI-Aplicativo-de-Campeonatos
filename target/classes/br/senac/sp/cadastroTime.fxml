@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
@@ -15,7 +16,10 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Text>
-      <ImageView fitHeight="108.0" fitWidth="148.0" layoutX="114.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="108.0" fitWidth="148.0" layoutX="135.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/badge-placeholder.png" />
+         </image></ImageView>
       <TextField fx:id="textFieldNome" layoutX="40.0" layoutY="155.0" prefHeight="25.0" prefWidth="296.0" promptText="Nome do time" />
       <Text layoutX="40.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade de Membros" />
       <Spinner fx:id="spinnerQuantidade" editable="true" layoutX="40.0" layoutY="226.0" prefHeight="25.0" prefWidth="296.0" />

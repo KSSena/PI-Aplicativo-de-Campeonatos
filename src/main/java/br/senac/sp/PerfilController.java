@@ -1,7 +1,5 @@
 package br.senac.sp;
 
-import br.senac.sp.dao.CampeonatoDAO;
-import br.senac.sp.dao.EquipeDAO;
 import br.senac.sp.dao.UsuarioDAO;
 import br.senac.sp.model.Endereco;
 import br.senac.sp.model.Usuario;

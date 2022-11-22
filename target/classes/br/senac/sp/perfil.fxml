@@ -5,6 +5,7 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
@@ -13,8 +14,8 @@
    <children>
       <Text layoutX="23.0" layoutY="25.0" onKeyPressed="#switchToTelaInicio" onMouseClicked="#switchToTelaInicio" strokeType="OUTSIDE" strokeWidth="0.0" text="Voltar" wrappingWidth="41.13671875" />
       <Text layoutX="26.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" />
-      <TextField fx:id="textFieldEmail" layoutX="23.0" layoutY="171.0" prefHeight="25.0" prefWidth="330.0" promptText="E-mail" />
-      <PasswordField fx:id="passwordFieldSenha" layoutX="23.0" layoutY="204.0" prefHeight="25.0" prefWidth="330.0" promptText="Senha" />
+      <TextField fx:id="textFieldEmail" editable="false" layoutX="23.0" layoutY="171.0" prefHeight="25.0" prefWidth="330.0" promptText="E-mail" />
+      <PasswordField fx:id="passwordFieldSenha" editable="false" layoutX="23.0" layoutY="204.0" prefHeight="25.0" prefWidth="330.0" promptText="Senha" />
       <Text layoutX="23.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informações Pessoais" />
       <TextField fx:id="textFieldNome" layoutX="23.0" layoutY="287.0" prefHeight="25.0" prefWidth="330.0" promptText="Nome" />
       <TextField fx:id="textFieldCPF" layoutX="23.0" layoutY="325.0" prefHeight="25.0" prefWidth="330.0" promptText="CPF" />
@@ -26,7 +27,10 @@
       <TextField fx:id="textFieldNumero" layoutX="205.0" layoutY="480.0" prefHeight="25.0" prefWidth="148.0" promptText="Número" />
       <Button fx:id="buttonCadastrar" layoutX="74.0" layoutY="614.0" mnemonicParsing="false" onAction="#alterar" prefHeight="39.0" prefWidth="217.0" text="Salvar" />
       <TextField fx:id="textFieldCidade" layoutX="205.0" layoutY="554.0" prefHeight="25.0" prefWidth="148.0" promptText="Cidade" />
-      <ImageView fitHeight="93.0" fitWidth="139.0" layoutX="113.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="93.0" fitWidth="139.0" layoutX="136.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/userIcon.png" />
+         </image></ImageView>
       <ChoiceBox fx:id="choiceBoxUF" layoutX="26.0" layoutY="554.0" prefHeight="25.0" prefWidth="163.0" />
    </children>
 </Pane>
