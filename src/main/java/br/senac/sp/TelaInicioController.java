@@ -11,8 +11,6 @@ import br.senac.sp.dao.UsuarioDAO;
 import br.senac.sp.model.Campeonato;
 import br.senac.sp.model.Equipe;
 import br.senac.sp.model.Usuario;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
@@ -38,6 +36,7 @@ public class TelaInicioController implements Initializable{
 
         listViewTimes.getItems().setAll(listaEquipes);
         listViewCampeonatos.getItems().setAll(listaCampeonatos);
+        
         textNome.setText(usuario.getNome());
         textEmail.setText(usuario.getEmail());
     }

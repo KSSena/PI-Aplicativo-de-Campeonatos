@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
 public class TelaCampeonatoController implements Initializable{
@@ -24,7 +25,7 @@ public class TelaCampeonatoController implements Initializable{
     @FXML TextArea textAreaDescricao;
     @FXML Text textQuantidade;
     @FXML Text textCategoria;
-    @FXML Text textEditar;
+    @FXML ImageView imageViewEditar;
     @FXML Button buttonInscreverEquipe;
     @FXML ComboBox<Equipe> comboBoxInscrever;
     @FXML ListView<Equipe> listViewTimes;
@@ -44,7 +45,7 @@ public class TelaCampeonatoController implements Initializable{
         listViewTimes.getItems().addAll(listaEquipes);
 
         if(!CampeonatoDAO.verificarOrganizador(id, App.uuid)){
-            textEditar.setVisible(false);
+            imageViewEditar.setVisible(false);
         };
 
         ObservableList<Equipe> listaEquipesAptas = FXCollections.observableArrayList(CampeonatoDAO.carregarEquipesAptas(App.uuid, id));

@@ -55,8 +55,15 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Text>
-      <Text fill="WHITE" layoutX="296.0" layoutY="40.0" onMouseClicked="#switchToBusca" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Buscar" />
       <ListView fx:id="listViewTimes" layoutX="21.0" layoutY="210.0" onMouseClicked="#switchToTime" prefHeight="192.0" prefWidth="333.0" />
       <ListView fx:id="listViewCampeonatos" layoutX="21.0" layoutY="462.0" onMouseClicked="#switchToCampeonato" prefHeight="178.0" prefWidth="333.0" />
+      <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="311.0" layoutY="14.0" onMouseClicked="#switchToBusca" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/Edit-icon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
    </children>
 </Pane>

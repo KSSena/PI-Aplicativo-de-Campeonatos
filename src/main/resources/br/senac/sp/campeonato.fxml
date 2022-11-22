@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -13,28 +14,51 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.senac.sp.TelaCampeonatoController">
    <children>
-      <Text layoutX="29.0" layoutY="35.0" onMouseClicked="#switchToTelaInicio" strokeType="OUTSIDE" strokeWidth="0.0" text="Voltar" />
+      <ImageView fitHeight="694.0" fitWidth="375.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/trofeu.jpg" />
+         </image>
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+      </ImageView>
+      <ImageView fitHeight="667.0" fitWidth="382.0" layoutX="-6.0" opacity="0.84" pickOnBounds="true">
+         <image>
+            <Image url="@images/black.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="27.0" layoutX="19.0" layoutY="19.0" onMouseClicked="#switchToTelaInicio" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/back-arrow.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="109.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/award-placeholder.png" />
          </image></ImageView>
       <TextArea fx:id="textAreaDescricao" editable="false" layoutX="29.0" layoutY="266.0" prefHeight="107.0" prefWidth="307.0" />
-      <Text layoutX="31.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição" />
-      <Text fx:id="textQuantidade" layoutX="31.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade Máxima de Equipes: " wrappingWidth="307.0" />
-      <Text fx:id="textCategoria" layoutX="29.0" layoutY="422.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Categoria: " wrappingWidth="307.0" />
-      <Text layoutX="167.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipes" />
-      <Text fx:id="textNome" layoutX="63.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Campeonato" textAlignment="CENTER" wrappingWidth="250.0">
+      <Text fill="WHITE" layoutX="31.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição" />
+      <Text fx:id="textQuantidade" fill="WHITE" layoutX="31.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade Máxima de Equipes: " wrappingWidth="307.0" />
+      <Text fx:id="textCategoria" fill="WHITE" layoutX="29.0" layoutY="422.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Categoria: " wrappingWidth="307.0" />
+      <Text fill="WHITE" layoutX="167.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipes" />
+      <Text fx:id="textNome" fill="WHITE" layoutX="60.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Campeonato" textAlignment="CENTER" wrappingWidth="250.0">
          <font>
             <Font size="32.0" />
          </font>
       </Text>
-      <Text fx:id="textEditar" layoutX="315.0" layoutY="27.0" onMouseClicked="#switchToEditarCampeonato" strokeType="OUTSIDE" strokeWidth="0.0" text="Editar">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Text>
       <Button fx:id="buttonInscreverEquipe" layoutX="208.0" layoutY="568.0" mnemonicParsing="false" onAction="#inscreverEquipe" prefHeight="25.0" prefWidth="109.0" text="Inscrever Equipe" />
       <ComboBox fx:id="comboBoxInscrever" layoutX="57.0" layoutY="568.0" prefWidth="150.0" promptText="Seus Times" />
       <ListView fx:id="listViewTimes" layoutX="30.0" layoutY="442.0" onMouseClicked="#switchToTime" prefHeight="118.0" prefWidth="307.0" />
+      <ImageView fx:id="imageViewEditar" fitHeight="36.0" fitWidth="36.0" layoutX="320.0" layoutY="14.0" onMouseClicked="#switchToEditarCampeonato" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/Edit-icon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
    </children>
 </Pane>

@@ -18,13 +18,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
 public class TimeController implements Initializable{
     @FXML Text textNome;
     @FXML TextArea textAreaDescricao;
     @FXML Text textQuantidade;
-    @FXML Text textEditar;
+    @FXML ImageView imageViewEditar;
     @FXML Text textCategoria;
     @FXML Button buttonEntrarTime;
     @FXML ListView<Usuario> listViewMembros;
@@ -48,9 +49,9 @@ public class TimeController implements Initializable{
             if(u.getUuid().equals(App.uuid)) {
                 buttonEntrarTime.setVisible(false);
                 if(!u.isEditor())
-                    textEditar.setVisible(false);
+                    imageViewEditar.setVisible(false);
             }else{
-                textEditar.setVisible(false);
+                imageViewEditar.setVisible(false);
             }
         }
     }

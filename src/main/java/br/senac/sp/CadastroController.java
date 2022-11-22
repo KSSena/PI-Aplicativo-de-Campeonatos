@@ -13,7 +13,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.text.Text;
 
 import java.time.ZoneId;
 import java.util.Date;
@@ -31,11 +30,10 @@ public class CadastroController{
     @FXML ComboBox<String> comboBoxUF;
     @FXML TextField textFieldCidade;
     @FXML Button buttonCadastrar;
-    @FXML Text textVoltar;
 
     
     @FXML
-    private void switchToPrimary() throws IOException {
+    private void switchToLogin() throws IOException {
         App.setRoot("login");
     }
 
@@ -59,7 +57,7 @@ public class CadastroController{
         
         if(UsuarioDAO.adicionar(usuario)){
             MessageFactory.mostrarMensagem("Cadastro Efetuado com Sucesso", AlertType.CONFIRMATION);
-            switchToPrimary();
+            switchToLogin();
         }else{
             MessageFactory.mostrarMensagem("Falha ao cadastrar", AlertType.ERROR);
         };
