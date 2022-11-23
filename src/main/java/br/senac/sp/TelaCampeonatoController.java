@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import br.senac.sp.dao.CampeonatoDAO;
 import br.senac.sp.model.Campeonato;
 import br.senac.sp.model.Equipe;
+import br.senac.sp.utils.MessageFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -17,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
@@ -27,6 +29,7 @@ public class TelaCampeonatoController implements Initializable{
     @FXML Text textCategoria;
     @FXML ImageView imageViewEditar;
     @FXML Button buttonInscreverEquipe;
+    @FXML Button buttonExcluirCampeonato;
     @FXML ComboBox<Equipe> comboBoxInscrever;
     @FXML ListView<Equipe> listViewTimes;
     
@@ -46,15 +49,19 @@ public class TelaCampeonatoController implements Initializable{
 
         if(!CampeonatoDAO.verificarOrganizador(id, App.uuid)){
             imageViewEditar.setVisible(false);
+            buttonExcluirCampeonato.setVisible(false);
         };
 
-        ObservableList<Equipe> listaEquipesAptas = FXCollections.observableArrayList(CampeonatoDAO.carregarEquipesAptas(App.uuid, id));
-            
-        if(listaEquipesAptas.isEmpty()){
+        ArrayList<Equipe> listaEquipesAptas = CampeonatoDAO.carregarEquipesAptas(App.uuid, App.idCampeonato);
+        
+        ObservableList<Equipe> listaObservavel =  FXCollections.observableArrayList(listaEquipesAptas);
+        
+        if(listaObservavel.isEmpty()){
             comboBoxInscrever.setVisible(false);
             buttonInscreverEquipe.setVisible(false);
         }else
-            comboBoxInscrever.setItems(listaEquipesAptas);
+            comboBoxInscrever.setItems(listaObservavel);
+    
     }
 
     @FXML
@@ -88,5 +95,11 @@ public class TelaCampeonatoController implements Initializable{
             App.setRoot("time");
         }
     }  
+
+    public void excluirCampeonato() throws IOException{
+        CampeonatoDAO.excluirCampeonato(App.idCampeonato, App.uuid);
+        MessageFactory.mostrarMensagem("Campeonato excluido com sucesso", AlertType.CONFIRMATION);
+        switchToTelaInicio();
+    }
 
 }

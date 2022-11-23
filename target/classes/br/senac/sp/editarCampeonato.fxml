@@ -10,11 +10,12 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.senac.sp.EditarCampeonatoController">
    <children>
-      <ImageView fitHeight="694.0" fitWidth="375.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="667.0" fitWidth="493.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/trofeu.jpg" />
          </image>
@@ -27,7 +28,7 @@
             <Image url="@images/black.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="25.0" fitWidth="27.0" layoutX="9.0" layoutY="10.0" onMouseClicked="#switchToCampeonato" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="25.0" fitWidth="27.0" layoutX="20.0" layoutY="20.0" onMouseClicked="#switchToCampeonato" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/back-arrow.png" />
          </image>
@@ -35,20 +36,25 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fitHeight="108.0" fitWidth="148.0" layoutX="134.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="170.0" fitWidth="300.0" layoutX="38.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/award-placeholder.png" />
          </image></ImageView>
-      <TextField fx:id="textFieldNome" layoutX="40.0" layoutY="155.0" prefHeight="25.0" prefWidth="296.0" promptText="Nome do campeonato" />
-      <Text fill="WHITE" layoutX="40.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade de Participantes" />
-      <Spinner fx:id="spinnerQuantidade" editable="true" layoutX="40.0" layoutY="226.0" prefHeight="25.0" prefWidth="296.0" />
-      <TextField fx:id="textFieldCategoria" layoutX="40.0" layoutY="271.0" prefHeight="25.0" prefWidth="296.0" promptText="Categoria" />
-      <TextArea fx:id="textAreaDescricao" layoutX="40.0" layoutY="334.0" prefHeight="114.0" prefWidth="296.0" />
-      <Text fill="WHITE" layoutX="40.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição" />
-      <Button fx:id="buttonAlterar" layoutX="74.0" layoutY="525.0" mnemonicParsing="false" onAction="#alterar" prefHeight="25.0" prefWidth="227.0" text="Editar Campeonato" />
-      <DatePicker fx:id="datePickerInicio" layoutX="42.0" layoutY="475.0" prefHeight="25.0" prefWidth="136.0" />
-      <DatePicker fx:id="datePickerFim" layoutX="196.0" layoutY="475.0" prefHeight="25.0" prefWidth="136.0" />
-      <Text fill="WHITE" layoutX="42.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Inicio:" />
-      <Text fill="WHITE" layoutX="196.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Fim:" />
+      <TextField fx:id="textFieldNome" layoutX="38.0" layoutY="249.0" prefHeight="25.0" prefWidth="300.0" promptText="Nome do campeonato" />
+      <Text fill="WHITE" layoutX="40.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade de Participantes:" />
+      <Spinner fx:id="spinnerQuantidade" editable="true" layoutX="38.0" layoutY="301.0" prefHeight="25.0" prefWidth="300.0" />
+      <TextField fx:id="textFieldCategoria" layoutX="38.0" layoutY="344.0" prefHeight="25.0" prefWidth="300.0" promptText="Categoria" />
+      <TextArea fx:id="textAreaDescricao" layoutX="38.0" layoutY="409.0" prefHeight="114.0" prefWidth="300.0" />
+      <Text fill="WHITE" layoutX="40.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição:" />
+      <Button fx:id="buttonAlterar" layoutX="38.0" layoutY="611.0" mnemonicParsing="false" onAction="#alterar" prefHeight="25.0" prefWidth="300.0" text="Editar Campeonato" />
+      <DatePicker fx:id="datePickerInicio" layoutX="40.0" layoutY="562.0" prefHeight="25.0" prefWidth="136.0" />
+      <DatePicker fx:id="datePickerFim" layoutX="202.0" layoutY="562.0" prefHeight="25.0" prefWidth="136.0" />
+      <Text fill="WHITE" layoutX="45.0" layoutY="558.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Inicio:" />
+      <Text fill="WHITE" layoutX="207.0" layoutY="557.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Fim:" />
+      <Text fill="WHITE" layoutX="67.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editar Campeonato">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
    </children>
 </Pane>

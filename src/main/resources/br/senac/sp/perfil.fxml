@@ -10,11 +10,12 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.senac.sp.PerfilController">
    <children>
-      <ImageView fitHeight="694.0" fitWidth="375.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="667.0" fitWidth="493.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/trofeu.jpg" />
          </image>
@@ -27,7 +28,7 @@
             <Image url="@images/black.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="25.0" fitWidth="27.0" layoutX="50.0" layoutY="44.0" onMouseClicked="#switchToTelaInicio" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="25.0" fitWidth="27.0" layoutX="20.0" layoutY="20.0" onMouseClicked="#switchToTelaInicio" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/back-arrow.png" />
          </image>
@@ -35,25 +36,29 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <Text layoutX="23.0" layoutY="25.0" onKeyPressed="#switchToTelaInicio" onMouseClicked="#switchToTelaInicio" strokeType="OUTSIDE" strokeWidth="0.0" text="Voltar" wrappingWidth="41.13671875" />
-      <Text fill="WHITE" layoutX="26.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" />
-      <TextField fx:id="textFieldEmail" editable="false" layoutX="23.0" layoutY="171.0" prefHeight="25.0" prefWidth="330.0" promptText="E-mail" />
-      <PasswordField fx:id="passwordFieldSenha" editable="false" layoutX="23.0" layoutY="204.0" prefHeight="25.0" prefWidth="330.0" promptText="Senha" />
-      <Text fill="WHITE" layoutX="23.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informações Pessoais" />
-      <TextField fx:id="textFieldNome" layoutX="23.0" layoutY="287.0" prefHeight="25.0" prefWidth="330.0" promptText="Nome" />
-      <TextField fx:id="textFieldCPF" layoutX="23.0" layoutY="325.0" prefHeight="25.0" prefWidth="330.0" promptText="CPF" />
-      <DatePicker fx:id="datePickerNascimento" layoutX="22.0" layoutY="358.0" prefHeight="25.0" prefWidth="330.0" promptText="Data de Nascimento" />
-      <Text fill="WHITE" layoutX="22.0" layoutY="432.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Endereco" />
-      <TextField fx:id="textFieldLogradouro" layoutX="22.0" layoutY="446.0" prefHeight="25.0" prefWidth="330.0" promptText="Logradouro" />
-      <TextField fx:id="textFieldBairro" layoutX="23.0" layoutY="513.0" prefHeight="25.0" prefWidth="330.0" promptText="Bairro" />
-      <TextField fx:id="textFieldCEP" layoutX="22.0" layoutY="480.0" prefHeight="25.0" prefWidth="179.0" promptText="CEP" />
-      <TextField fx:id="textFieldNumero" layoutX="205.0" layoutY="480.0" prefHeight="25.0" prefWidth="148.0" promptText="Número" />
-      <Button fx:id="buttonCadastrar" layoutX="74.0" layoutY="614.0" mnemonicParsing="false" onAction="#alterar" prefHeight="39.0" prefWidth="217.0" text="Salvar" />
-      <TextField fx:id="textFieldCidade" layoutX="205.0" layoutY="554.0" prefHeight="25.0" prefWidth="148.0" promptText="Cidade" />
-      <ImageView fitHeight="93.0" fitWidth="139.0" layoutX="136.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+      <Text fill="WHITE" layoutX="38.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" />
+      <TextField fx:id="textFieldEmail" editable="false" layoutX="38.0" layoutY="222.0" prefHeight="25.0" prefWidth="300.0" promptText="E-mail" />
+      <PasswordField fx:id="passwordFieldSenha" editable="false" layoutX="38.0" layoutY="255.0" prefHeight="25.0" prefWidth="300.0" promptText="Senha" />
+      <Text fill="WHITE" layoutX="38.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informações Pessoais" />
+      <TextField fx:id="textFieldNome" layoutX="38.0" layoutY="311.0" prefHeight="25.0" prefWidth="300.0" promptText="Nome" />
+      <TextField fx:id="textFieldCPF" layoutX="38.0" layoutY="349.0" prefHeight="25.0" prefWidth="300.0" promptText="CPF" />
+      <DatePicker fx:id="datePickerNascimento" layoutX="38.0" layoutY="382.0" prefHeight="25.0" prefWidth="300.0" promptText="Data de Nascimento" />
+      <Text fill="WHITE" layoutX="38.0" layoutY="432.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Endereco" />
+      <TextField fx:id="textFieldLogradouro" layoutX="38.0" layoutY="446.0" prefHeight="25.0" prefWidth="300.0" promptText="Logradouro" />
+      <TextField fx:id="textFieldBairro" layoutX="38.0" layoutY="513.0" prefHeight="25.0" prefWidth="300.0" promptText="Bairro" />
+      <TextField fx:id="textFieldCEP" layoutX="38.0" layoutY="480.0" prefHeight="25.0" prefWidth="163.0" promptText="CEP" />
+      <TextField fx:id="textFieldNumero" layoutX="205.0" layoutY="480.0" prefHeight="25.0" prefWidth="133.0" promptText="Número" />
+      <Button fx:id="buttonCadastrar" layoutX="38.0" layoutY="614.0" mnemonicParsing="false" onAction="#alterar" prefHeight="40.0" prefWidth="300.0" text="Salvar" />
+      <TextField fx:id="textFieldCidade" layoutX="205.0" layoutY="554.0" prefHeight="25.0" prefWidth="133.0" promptText="Cidade" />
+      <ImageView fitHeight="93.0" fitWidth="139.0" layoutX="141.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/userIcon.png" />
          </image></ImageView>
-      <ChoiceBox fx:id="choiceBoxUF" layoutX="26.0" layoutY="554.0" prefHeight="25.0" prefWidth="163.0" />
+      <ChoiceBox fx:id="choiceBoxUF" layoutX="35.0" layoutY="554.0" prefHeight="25.0" prefWidth="163.0" />
+      <Text fill="WHITE" layoutX="63.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Perfil">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
    </children>
 </Pane>

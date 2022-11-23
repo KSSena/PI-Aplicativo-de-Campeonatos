@@ -8,11 +8,12 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.senac.sp.BuscaController">
    <children>
-      <ImageView fitHeight="694.0" fitWidth="375.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="667.0" fitWidth="493.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/trofeu.jpg" />
          </image>
@@ -25,11 +26,17 @@
             <Image url="@images/black.png" />
          </image>
       </ImageView>
-      <Text fill="WHITE" layoutX="17.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Times" />
-      <Text fill="WHITE" layoutX="20.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Campeonatos" />
-      <TextField fx:id="textFieldPesquisa" layoutX="59.0" layoutY="14.0" prefHeight="25.0" prefWidth="223.0" />
-      <Button layoutX="286.0" layoutY="14.0" mnemonicParsing="false" onAction="#buscar" text="Pesquisar" />
-      <ImageView fitHeight="25.0" fitWidth="27.0" layoutX="20.0" layoutY="14.0" onMouseClicked="#switchToTelaInicio" pickOnBounds="true" preserveRatio="true">
+      <Text fill="WHITE" layoutX="38.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Times" textAlignment="CENTER" wrappingWidth="300.0">
+         <font>
+            <Font size="20.0" />
+         </font></Text>
+      <Text fill="WHITE" layoutX="38.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Campeonatos" textAlignment="CENTER" wrappingWidth="300.0">
+         <font>
+            <Font size="20.0" />
+         </font></Text>
+      <TextField fx:id="textFieldPesquisa" layoutX="59.0" layoutY="20.0" prefHeight="25.0" prefWidth="210.0" />
+      <Button layoutX="271.0" layoutY="20.0" mnemonicParsing="false" onAction="#buscar" text="Pesquisar" />
+      <ImageView fitHeight="25.0" fitWidth="27.0" layoutX="20.0" layoutY="20.0" onMouseClicked="#switchToTelaInicio" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/back-arrow.png" />
          </image>
@@ -37,7 +44,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ListView fx:id="listViewEquipes" layoutX="20.0" layoutY="127.0" onMouseClicked="#switchToTime" prefHeight="134.0" prefWidth="335.0" />
-      <ListView fx:id="listViewCampeonatos" layoutX="20.0" layoutY="304.0" onMouseClicked="#switchToCampeonato" prefHeight="134.0" prefWidth="335.0" />
+      <ListView fx:id="listViewEquipes" layoutX="38.0" layoutY="101.0" onMouseClicked="#switchToTime" prefHeight="240.0" prefWidth="300.0" />
+      <ListView fx:id="listViewCampeonatos" layoutX="38.0" layoutY="400.0" onMouseClicked="#switchToCampeonato" prefHeight="240.0" prefWidth="300.0" />
    </children>
 </Pane>

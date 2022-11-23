@@ -332,7 +332,7 @@ public class CampeonatoDAO {
             if (verificarOrganizador(idCampeonato, uuidOrganizador)) {
                 conexao = Conexao.abrirConexao();
 
-                comandoSQL1 = conexao.prepareStatement("DELETE FROM organiza WHERE fk_equipe_id = ?");
+                comandoSQL1 = conexao.prepareStatement("DELETE FROM organiza WHERE fk_campeonato_id = ?");
                 comandoSQL1.setInt(1, idCampeonato);
 
                 comandoSQL2 = conexao.prepareStatement("DELETE FROM ocorre WHERE fk_campeonato_id = ?");
@@ -495,7 +495,6 @@ public static ArrayList<Equipe> carregarEquipesAptas(String uuid, int idCampeona
     try {
         conexao = Conexao.abrirConexao();
         comandoSQL = conexao.prepareStatement("SELECT * FROM equipe INNER JOIN participa ON equipe.id = participa.fk_equipe_id  WHERE  participa.fk_login_uuid = ? AND participa.editor = true AND NOT EXISTS (SELECT fk_equipe_id FROM compete WHERE fk_Campeonato_ID = ?)");
-
         comandoSQL.setString(1, uuid);
         comandoSQL.setInt(2, idCampeonato);
 
@@ -526,4 +525,44 @@ public static ArrayList<Equipe> carregarEquipesAptas(String uuid, int idCampeona
     }
     return retorno;
     }
+
+    public static ArrayList<Campeonato> carregarCampeonatosOrganiza(String uuid) {
+        ArrayList<Campeonato> retorno = new ArrayList<>();
+        ResultSet rs = null;
+        Connection conexao = null;
+        PreparedStatement comandoSQL = null;
+    
+        try {
+            conexao = Conexao.abrirConexao();
+            comandoSQL = conexao.prepareStatement("SELECT * FROM campeonato INNER JOIN organiza ON campeonato.id = organiza.fk_campeonato_id WHERE organiza.fk_login_uuid = ?");
+            comandoSQL.setString(1, uuid);
+            
+    
+            rs = comandoSQL.executeQuery();
+    
+            while (rs.next()) {
+                Campeonato campeonato = new Campeonato(rs.getInt("campeonato.id"));
+                campeonato.setNome(rs.getString("campeonato.nome"));
+                retorno.add(campeonato);
+            }
+    
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e.getMessage());
+            retorno = null;
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (comandoSQL != null) {
+                    comandoSQL.close();
+                }
+    
+                Conexao.fecharConexao();
+    
+            } catch (SQLException e) {
+            }
+        }
+        return retorno;
+        }
 }

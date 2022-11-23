@@ -9,11 +9,12 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.senac.sp.EditarTimeController">
    <children>
-      <ImageView fitHeight="694.0" fitWidth="375.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="667.0" fitWidth="493.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/trofeu.jpg" />
          </image>
@@ -26,7 +27,7 @@
             <Image url="@images/black.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="25.0" fitWidth="27.0" layoutX="50.0" layoutY="44.0" onMouseClicked="#switchToTime" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="25.0" fitWidth="27.0" layoutX="20.0" layoutY="20.0" onMouseClicked="#switchToTime" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/back-arrow.png" />
          </image>
@@ -34,16 +35,21 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fitHeight="108.0" fitWidth="148.0" layoutX="135.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="108.0" fitWidth="148.0" layoutX="133.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/badge-placeholder.png" />
          </image></ImageView>
-      <TextField fx:id="textFieldNome" layoutX="40.0" layoutY="155.0" prefHeight="25.0" prefWidth="296.0" promptText="Nome do time" />
-      <Text fill="WHITE" layoutX="40.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade de Membros:" />
-      <Spinner fx:id="spinnerQuantidade" layoutX="40.0" layoutY="226.0" prefHeight="25.0" prefWidth="296.0" />
-      <TextField fx:id="textFieldCategoria" layoutX="40.0" layoutY="271.0" prefHeight="25.0" prefWidth="296.0" promptText="Categorias" />
-      <TextArea fx:id="textAreaDescricao" layoutX="40.0" layoutY="372.0" prefHeight="114.0" prefWidth="296.0" />
-      <Text fill="WHITE" layoutX="40.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição:" />
-      <Button fx:id="buttonAlterar" layoutX="75.0" layoutY="519.0" mnemonicParsing="false" onAction="#alterar" prefHeight="25.0" prefWidth="227.0" text="Salvar Alterações" />
+      <TextField fx:id="textFieldNome" layoutX="38.0" layoutY="211.0" prefHeight="25.0" prefWidth="300.0" promptText="Nome do time" />
+      <Text fill="WHITE" layoutX="37.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade de Membros:" />
+      <Spinner fx:id="spinnerQuantidade" layoutX="38.0" layoutY="270.0" prefHeight="25.0" prefWidth="300.0" />
+      <TextField fx:id="textFieldCategoria" layoutX="38.0" layoutY="320.0" prefHeight="25.0" prefWidth="300.0" promptText="Categorias" />
+      <TextArea fx:id="textAreaDescricao" layoutX="38.0" layoutY="394.0" prefHeight="114.0" prefWidth="300.0" />
+      <Text fill="WHITE" layoutX="39.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição:" />
+      <Button fx:id="buttonAlterar" layoutX="38.0" layoutY="611.0" mnemonicParsing="false" onAction="#alterar" prefHeight="25.0" prefWidth="300.0" text="Salvar Alterações" />
+      <Text fill="WHITE" layoutX="66.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editar Time">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
    </children>
 </Pane>

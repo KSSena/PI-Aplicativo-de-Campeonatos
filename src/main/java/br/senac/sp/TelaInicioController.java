@@ -25,6 +25,7 @@ public class TelaInicioController implements Initializable{
     @FXML Pane paneCartao;
     @FXML Text textCriarTime;
     @FXML ListView<Equipe> listViewTimes;
+    @FXML ListView<Campeonato> listViewMeusCampeonatos;
     @FXML ListView<Campeonato> listViewCampeonatos;
 
     public void carregar(){
@@ -32,10 +33,13 @@ public class TelaInicioController implements Initializable{
         ArrayList<Equipe> listaEquipes = EquipeDAO.carregarListaEquipes(App.uuid);
         usuario.setListaEquipes(listaEquipes);
         ArrayList<Campeonato> listaCampeonatos = CampeonatoDAO.carregarListaCampeonatos(usuario.getListaEquipes());
+        ArrayList<Campeonato> listaCampeonatosOrganiza = CampeonatoDAO.carregarCampeonatosOrganiza(App.uuid);
+
         usuario.setListaCampeonato(listaCampeonatos);
 
         listViewTimes.getItems().setAll(listaEquipes);
         listViewCampeonatos.getItems().setAll(listaCampeonatos);
+        listViewMeusCampeonatos.getItems().setAll(listaCampeonatosOrganiza);
         
         textNome.setText(usuario.getNome());
         textEmail.setText(usuario.getEmail());
@@ -70,6 +74,15 @@ public class TelaInicioController implements Initializable{
         App.setRoot("cadastroCampeonato");
     }  
     
+
+    @FXML
+    private void switchToMeusCampeonato() throws IOException {
+        if(listViewMeusCampeonatos.getSelectionModel().getSelectedItem() != null){
+            int id = listViewMeusCampeonatos.getSelectionModel().getSelectedItem().getId();
+            App.idCampeonato= id;
+            App.setRoot("campeonato");
+        }
+    }
     @FXML
     private void switchToCampeonato() throws IOException {
         if(listViewCampeonatos.getSelectionModel().getSelectedItem() != null){

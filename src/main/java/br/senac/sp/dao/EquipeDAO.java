@@ -240,14 +240,14 @@ public class EquipeDAO {
             comandoSQL1.setInt(1, Id);
 
             comandoSQL2 = conexao.prepareStatement("DELETE FROM participa WHERE fk_equipe_id = ?");
-            comandoSQL1.setInt(1, Id);
-
-            comandoSQL3 = conexao.prepareStatement(" DELETE FROM equipe WHERE id = ? ");
             comandoSQL2.setInt(1, Id);
 
-            int linhasAfetadas = comandoSQL1.executeUpdate() + comandoSQL2.executeUpdate();
+            comandoSQL3 = conexao.prepareStatement(" DELETE FROM equipe WHERE id = ? ");
+            comandoSQL3.setInt(1, Id);
 
-            if (linhasAfetadas >= 2) {
+            int linhasAfetadas = comandoSQL1.executeUpdate() + comandoSQL2.executeUpdate() + comandoSQL3.executeUpdate();
+
+            if (linhasAfetadas >= 3) {
                 retorno = true;
             } else {
                 retorno = false;

@@ -30,21 +30,21 @@
          <image>
             <Image url="@images/badge-placeholder.png" />
          </image></ImageView>
-      <TextArea fx:id="textAreaDescricao" editable="false" layoutX="29.0" layoutY="242.0" prefHeight="107.0" prefWidth="307.0" />
-      <Text fill="WHITE" layoutX="35.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição" />
-      <Text fx:id="textQuantidade" fill="WHITE" layoutX="29.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade de Membros: " wrappingWidth="307.0" />
-      <Text fx:id="textCategoria" fill="WHITE" layoutX="29.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Categoria: " wrappingWidth="307.0" />
-      <Text fill="WHITE" layoutX="144.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Integrantes" />
-      <Text fill="WHITE" layoutX="152.0" layoutY="519.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Competições" />
-      <Text fx:id="textNome" fill="WHITE" layoutX="88.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Time" textAlignment="CENTER">
+      <TextArea fx:id="textAreaDescricao" editable="false" layoutX="38.0" layoutY="242.0" prefHeight="50.0" prefWidth="300.0" />
+      <Text fill="WHITE" layoutX="38.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição:" wrappingWidth="300.0" />
+      <Text fx:id="textQuantidade" fill="WHITE" layoutX="38.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade de Membros: " wrappingWidth="300.0" />
+      <Text fx:id="textCategoria" fill="WHITE" layoutX="38.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Categoria: " wrappingWidth="300.0" />
+      <Text fill="WHITE" layoutX="32.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Integrantes" textAlignment="CENTER" wrappingWidth="300.0" />
+      <Text fill="WHITE" layoutX="38.0" layoutY="489.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Competições" textAlignment="CENTER" wrappingWidth="300.0" />
+      <Text fx:id="textNome" fill="WHITE" layoutX="57.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Time" textAlignment="CENTER" wrappingWidth="250.0">
          <font>
-            <Font size="32.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
       </Text>
-      <Button fx:id="buttonEntrarTime" layoutX="91.0" layoutY="628.0" mnemonicParsing="false" onAction="#entrarTime" prefHeight="25.0" prefWidth="165.0" text="Entrar no time" />
-      <ListView fx:id="listViewMembros" layoutX="29.0" layoutY="414.0" prefHeight="83.0" prefWidth="307.0" />
-      <ListView fx:id="listViewCampeonatos" layoutX="35.0" layoutY="529.0" onMouseClicked="#switchToCampeonato" prefHeight="94.0" prefWidth="307.0" />
-      <ImageView fitHeight="25.0" fitWidth="27.0" layoutX="40.0" layoutY="34.0" onMouseClicked="#switchToTelaInicio" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="buttonEntrarTime" layoutX="38.0" layoutY="611.0" mnemonicParsing="false" onAction="#entrarTime" prefHeight="25.0" prefWidth="300.0" text="Entrar no time" />
+      <ListView fx:id="listViewMembros" layoutX="39.0" layoutY="377.0" prefHeight="83.0" prefWidth="300.0" />
+      <ListView fx:id="listViewCampeonatos" layoutX="38.0" layoutY="499.0" onMouseClicked="#switchToCampeonato" prefHeight="94.0" prefWidth="300.0" />
+      <ImageView fitHeight="25.0" fitWidth="27.0" layoutX="20.0" layoutY="20.0" onMouseClicked="#switchToTelaInicio" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/back-arrow.png" />
          </image>
@@ -52,7 +52,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fx:id="imageViewEditar" fitHeight="36.0" fitWidth="36.0" layoutX="321.0" layoutY="24.0" onMouseClicked="#switchToEditarTime" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imageViewEditar" fitHeight="25.0" fitWidth="27.0" layoutX="326.0" layoutY="20.0" onMouseClicked="#switchToEditarTime" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Edit-icon.png" />
          </image>
