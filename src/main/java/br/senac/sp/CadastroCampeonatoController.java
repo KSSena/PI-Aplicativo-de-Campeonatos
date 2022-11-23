@@ -20,14 +20,21 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
-public class CadastroCampeonatoController implements Initializable{
-    @FXML TextField textFieldNome;
-    @FXML Spinner<Integer> spinnerQuantidade;
-    @FXML TextField textFieldCategoria;
-    @FXML TextArea textAreaDescricao;
-    @FXML DatePicker datePickerInicio;
-    @FXML DatePicker datePickerFim;
-    @FXML Button buttonCriar;
+public class CadastroCampeonatoController implements Initializable {
+    @FXML
+    TextField textFieldNome;
+    @FXML
+    Spinner<Integer> spinnerQuantidade;
+    @FXML
+    TextField textFieldCategoria;
+    @FXML
+    TextArea textAreaDescricao;
+    @FXML
+    DatePicker datePickerInicio;
+    @FXML
+    DatePicker datePickerFim;
+    @FXML
+    Button buttonCriar;
 
     @FXML
     private void switchToTelaInicio() throws IOException {
@@ -35,20 +42,24 @@ public class CadastroCampeonatoController implements Initializable{
     }
 
     public void cadastrar() throws IOException {
-        Campeonato campeonato = new Campeonato();
+        if (!Validator.isEmpty(textFieldNome) && !Validator.isEmpty(textFieldCategoria) && !Validator.isEmpty(datePickerInicio) && !Validator.isEmpty(datePickerFim)) {
+            Campeonato campeonato = new Campeonato();
 
-        campeonato.setNome(textFieldNome.getText());
-        campeonato.setQtdTimes(spinnerQuantidade.getValue());
-        campeonato.setCategoria(textFieldCategoria.getText());
-        campeonato.setDescricao(textAreaDescricao.getText());
-        campeonato.setDataInicial(Date.from(datePickerInicio.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        campeonato.setDataFinal(Date.from(datePickerFim.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+            campeonato.setNome(textFieldNome.getText());
+            campeonato.setQtdTimes(spinnerQuantidade.getValue());
+            campeonato.setCategoria(textFieldCategoria.getText());
+            campeonato.setDescricao(textAreaDescricao.getText());
+            campeonato.setDataInicial(Date.from(datePickerInicio.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+            campeonato.setDataFinal(Date.from(datePickerFim.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
 
-        if(CampeonatoDAO.adicionar(campeonato, App.uuid)){
-            MessageFactory.mostrarMensagem("Cadastro de campeonato efetuado com sucesso", AlertType.CONFIRMATION);
-            switchToTelaInicio();
-        }else{
-            MessageFactory.mostrarMensagem("Falha ao cadastrar campeonato", AlertType.ERROR);
+            if (CampeonatoDAO.adicionar(campeonato, App.uuid)) {
+                MessageFactory.mostrarMensagem("Cadastro de campeonato efetuado com sucesso", AlertType.CONFIRMATION);
+                switchToTelaInicio();
+            } else {
+                MessageFactory.mostrarMensagem("Falha ao cadastrar campeonato", AlertType.ERROR);
+            }
+        } else {
+            MessageFactory.mostrarMensagem("Preencher campos obrigatorios (*)", AlertType.ERROR);
         }
     }
 
@@ -60,7 +71,6 @@ public class CadastroCampeonatoController implements Initializable{
         Validator.limitadorSomenteletras(textFieldNome, 30);
         Validator.limitadorSomenteletras(textFieldCategoria, 20);
         Validator.limitadorTextArea(textAreaDescricao, 200);
-        
     }
-    
+
 }

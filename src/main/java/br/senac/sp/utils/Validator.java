@@ -2,6 +2,7 @@ package br.senac.sp.utils;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -67,8 +68,6 @@ public class Validator {
     }
     
     
-    
-    
     // Limitador do TextArea
     
     public static void limitadorTextArea(final TextArea field, final int maxLength) {
@@ -81,5 +80,26 @@ public class Validator {
             }
         }
     });
+    }
+
+    public static boolean isEmpty(final TextField field){
+        if(field.getText().length() == 0){
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isEmpty(final DatePicker field){
+        if(field.getValue() == null){
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isFull(final TextField field, int maxLength){
+        if(field.getText().length() == maxLength){
+            return true;
+        }
+        return false;
     }
 }

@@ -20,10 +20,13 @@ import javafx.scene.control.TextField;
  * @author Kaio
  */
 public class BuscaController {
-    
-    @FXML ListView<Campeonato> listViewCampeonatos;
-    @FXML ListView<Equipe> listViewEquipes;
-    @FXML TextField textFieldPesquisa;
+
+    @FXML
+    ListView<Campeonato> listViewCampeonatos;
+    @FXML
+    ListView<Equipe> listViewEquipes;
+    @FXML
+    TextField textFieldPesquisa;
 
     public void buscar() {
         String pesquisa = textFieldPesquisa.getText();
@@ -37,20 +40,20 @@ public class BuscaController {
     }
 
     @FXML
-    private void switchToTime() throws IOException {   
-        if(listViewEquipes.getSelectionModel().getSelectedItem() != null){
+    private void switchToTime() throws IOException {
+        if (listViewEquipes.getSelectionModel().getSelectedItem() != null) {
             int id = listViewEquipes.getSelectionModel().getSelectedItem().getId();
             App.idTime = id;
             App.setRoot("time");
         }
-    }   
-    
+    }
+
     @FXML
     private void switchToCampeonato() throws IOException {
-        if(listViewCampeonatos.getSelectionModel().getSelectedItem() != null){
+        if (listViewCampeonatos.getSelectionModel().getSelectedItem() != null) {
             int id = listViewCampeonatos.getSelectionModel().getSelectedItem().getId();
-            App.idCampeonato= id;
+            App.idCampeonato = id;
             App.setRoot("campeonato");
         }
-    } 
+    }
 }

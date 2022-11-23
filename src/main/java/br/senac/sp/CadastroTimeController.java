@@ -17,12 +17,17 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
-public class CadastroTimeController implements Initializable{
-    @FXML TextField textFieldNome;
-    @FXML Spinner<Integer> spinnerQuantidade;
-    @FXML TextField textFieldCategorias;
-    @FXML TextArea textAreaDescricao;
-    @FXML Button buttonCriar;
+public class CadastroTimeController implements Initializable {
+    @FXML
+    TextField textFieldNome;
+    @FXML
+    Spinner<Integer> spinnerQuantidade;
+    @FXML
+    TextField textFieldCategorias;
+    @FXML
+    TextArea textAreaDescricao;
+    @FXML
+    Button buttonCriar;
 
     @FXML
     private void switchToTelaInicio() throws IOException {
@@ -30,27 +35,31 @@ public class CadastroTimeController implements Initializable{
     }
 
     public void cadastrar() throws IOException {
-        Equipe equipe = new Equipe();
+        if (!Validator.isEmpty(textFieldNome) && !Validator.isEmpty(textFieldCategorias)) {
+            Equipe equipe = new Equipe();
 
-        equipe.setNome(textFieldNome.getText());
-        equipe.setQtdMembros(spinnerQuantidade.getValue());
-        equipe.setCategoria(textFieldCategorias.getText());
-        equipe.setDescricao(textAreaDescricao.getText());
+            equipe.setNome(textFieldNome.getText());
+            equipe.setQtdMembros(spinnerQuantidade.getValue());
+            equipe.setCategoria(textFieldCategorias.getText());
+            equipe.setDescricao(textAreaDescricao.getText());
 
-        if(EquipeDAO.adicionar(equipe, App.uuid)){
-            MessageFactory.mostrarMensagem("Criação de Equipe Efetuada com Sucesso", AlertType.CONFIRMATION);
-            switchToTelaInicio();
-        }else
-            MessageFactory.mostrarMensagem("Falha ao cadastrar", AlertType.ERROR);
+            if (EquipeDAO.adicionar(equipe, App.uuid)) {
+                MessageFactory.mostrarMensagem("Criação de Equipe Efetuada com Sucesso", AlertType.CONFIRMATION);
+                switchToTelaInicio();
+            } else
+                MessageFactory.mostrarMensagem("Falha ao cadastrar", AlertType.ERROR);
+        } else {
+            MessageFactory.mostrarMensagem("Preencher campos obrigatorios (*)", AlertType.ERROR);
+        }
     }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 20, 1);
-         this.spinnerQuantidade.setValueFactory(valueFactory);
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 20, 1);
+        this.spinnerQuantidade.setValueFactory(valueFactory);
 
-         Validator.limitadorSomenteletras(textFieldNome, 30);
-         Validator.limitadorSomenteletras(textFieldCategorias, 20);
-         Validator.limitadorTextArea(textAreaDescricao, 200);
+        Validator.limitadorSomenteletras(textFieldNome, 30);
+        Validator.limitadorSomenteletras(textFieldCategorias, 20);
+        Validator.limitadorTextArea(textAreaDescricao, 200);
     }
 }

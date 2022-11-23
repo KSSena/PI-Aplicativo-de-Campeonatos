@@ -33,7 +33,7 @@
       <Text fill="WHITE" layoutX="28.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informações Pessoais" />
       <TextField fx:id="textFieldNome" layoutX="28.0" layoutY="213.0" prefHeight="25.0" prefWidth="330.0" promptText="Nome" />
       <TextField fx:id="textFieldCPF" layoutX="28.0" layoutY="251.0" prefHeight="25.0" prefWidth="330.0" promptText="CPF" />
-      <DatePicker fx:id="datePickerNascimento" layoutX="27.0" layoutY="284.0" prefHeight="25.0" prefWidth="330.0" promptText="Data de Nascimento" />
+      <DatePicker fx:id="datePickerNascimento" editable="false" layoutX="27.0" layoutY="284.0" prefHeight="25.0" prefWidth="330.0" promptText="Data de Nascimento" />
       <Text fill="WHITE" layoutX="27.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Endereco" />
       <TextField fx:id="textFieldLogradouro" layoutX="27.0" layoutY="372.0" prefHeight="25.0" prefWidth="330.0" promptText="Logradouro" />
       <TextField fx:id="textFieldBairro" layoutX="28.0" layoutY="439.0" prefHeight="25.0" prefWidth="330.0" promptText="Bairro" />

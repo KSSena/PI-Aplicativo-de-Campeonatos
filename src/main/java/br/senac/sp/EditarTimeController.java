@@ -19,38 +19,48 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
-public class EditarTimeController implements Initializable{
-    @FXML TextField textFieldNome;
-    @FXML Spinner<Integer> spinnerQuantidade;
-    @FXML TextField textFieldCategoria;
-    @FXML TextArea textAreaDescricao;
-    @FXML Button buttonAlterar;
+public class EditarTimeController implements Initializable {
+    @FXML
+    TextField textFieldNome;
+    @FXML
+    Spinner<Integer> spinnerQuantidade;
+    @FXML
+    TextField textFieldCategoria;
+    @FXML
+    TextArea textAreaDescricao;
+    @FXML
+    Button buttonAlterar;
 
-    public void carregar(int id){
+    public void carregar(int id) {
         Equipe equipe = EquipeDAO.carregarEquipe(id);
         equipe.setListaMembros(UsuarioDAO.carregarListaMembros(id));
         equipe.setListaCampeonatos(CampeonatoDAO.carregarListaCampeonatos(id));
 
         textFieldNome.setText(equipe.getNome());
-        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 20, equipe.getQtdMembros());
-        this.spinnerQuantidade.setValueFactory(valueFactory);    
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 20,
+                equipe.getQtdMembros());
+        this.spinnerQuantidade.setValueFactory(valueFactory);
         textFieldCategoria.setText(equipe.getCategoria());
         textAreaDescricao.setText(equipe.getDescricao());
     }
 
     public void alterar() throws IOException {
-        Equipe equipe = new Equipe(App.idTime);
+        if (!Validator.isEmpty(textFieldNome) && !Validator.isEmpty(textFieldCategoria)) {
+            Equipe equipe = new Equipe(App.idTime);
 
-        equipe.setNome(textFieldNome.getText());
-        equipe.setQtdMembros(spinnerQuantidade.getValue());
-        equipe.setCategoria(textFieldCategoria.getText());
-        equipe.setDescricao(textAreaDescricao.getText());
+            equipe.setNome(textFieldNome.getText());
+            equipe.setQtdMembros(spinnerQuantidade.getValue());
+            equipe.setCategoria(textFieldCategoria.getText());
+            equipe.setDescricao(textAreaDescricao.getText());
 
-        if(EquipeDAO.atualizar(equipe)){
-            MessageFactory.mostrarMensagem("Alteração realizada com sucesso", AlertType.CONFIRMATION);
-            switchToTime();
-        }else
-            MessageFactory.mostrarMensagem("Falha ao salvar alteração", AlertType.ERROR);
+            if (EquipeDAO.atualizar(equipe)) {
+                MessageFactory.mostrarMensagem("Alteração realizada com sucesso", AlertType.CONFIRMATION);
+                switchToTime();
+            } else
+                MessageFactory.mostrarMensagem("Falha ao salvar alteração", AlertType.ERROR);
+        } else {
+            MessageFactory.mostrarMensagem("Preencher campos obrigatorios (*)", AlertType.ERROR);
+        }
     }
 
     @Override
