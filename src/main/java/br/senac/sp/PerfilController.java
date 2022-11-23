@@ -4,6 +4,7 @@ import br.senac.sp.dao.UsuarioDAO;
 import br.senac.sp.model.Endereco;
 import br.senac.sp.model.Usuario;
 import br.senac.sp.utils.MessageFactory;
+import br.senac.sp.utils.Validator;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -78,6 +79,16 @@ public class PerfilController implements Initializable{
     public void initialize(URL arg0, ResourceBundle arg1) {
         carregar();
         choiceBoxUF.getItems().addAll("RO","AC","AM", "RR" ,"SP", "RJ");
+
+        Validator.limitador(textFieldEmail, 30);
+        Validator.limitador(passwordFieldSenha, 15);
+        Validator.limitadorSomenteletras(textFieldNome, 50);
+        Validator.limitadorSomenteNumeros(textFieldCPF,  11);   
+        Validator.limitadorSomenteletras(textFieldLogradouro, 50);
+        Validator.limitadorSomenteNumeros(textFieldCEP,  8);
+        Validator.limitadorSomenteNumeros(textFieldNumero,  10);
+        Validator.limitadorSomenteletras(textFieldBairro, 30);
+        Validator.limitadorSomenteletras(textFieldCidade, 30);
     }
 
     @FXML

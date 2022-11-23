@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import br.senac.sp.dao.EquipeDAO;
 import br.senac.sp.model.Equipe;
 import br.senac.sp.utils.MessageFactory;
+import br.senac.sp.utils.Validator;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -47,5 +48,9 @@ public class CadastroTimeController implements Initializable{
     public void initialize(URL arg0, ResourceBundle arg1) {
          SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 20, 1);
          this.spinnerQuantidade.setValueFactory(valueFactory);
+
+         Validator.limitadorSomenteletras(textFieldNome, 30);
+         Validator.limitadorSomenteletras(textFieldCategorias, 20);
+         Validator.limitadorTextArea(textAreaDescricao, 200);
     }
 }

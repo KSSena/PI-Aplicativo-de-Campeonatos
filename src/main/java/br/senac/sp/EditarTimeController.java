@@ -9,6 +9,7 @@ import br.senac.sp.dao.EquipeDAO;
 import br.senac.sp.dao.UsuarioDAO;
 import br.senac.sp.model.Equipe;
 import br.senac.sp.utils.MessageFactory;
+import br.senac.sp.utils.Validator;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -55,6 +56,9 @@ public class EditarTimeController implements Initializable{
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         carregar(App.idTime);
+        Validator.limitadorSomenteletras(textFieldNome, 30);
+        Validator.limitadorSomenteletras(textFieldCategoria, 20);
+        Validator.limitadorTextArea(textAreaDescricao, 200);
     }
 
     @FXML
