@@ -53,6 +53,7 @@ public class TimeController implements Initializable {
         textCategoria.setText("Categoria: " + equipe.getCategoria());
         textAreaDescricao.setText(equipe.getDescricao());
         editor = false;
+        
         for (Usuario u : listaMembros) {
             if (u.getUuid().equals(App.uuid)) {
                 buttonEntrarTime.setVisible(false);
@@ -77,7 +78,6 @@ public class TimeController implements Initializable {
     @FXML
     private void switchToEditarTime() throws IOException {
         App.setRoot("editarTime");
-        App.idTime = 1;
     }
 
     @FXML
@@ -85,6 +85,11 @@ public class TimeController implements Initializable {
         App.setRoot("telaInicio");
     }
 
+
+    /**
+     * Método para usuario entrar no time ou excluir o time caso o usuario seja o editor
+     * @throws IOException
+     */
     public void entrarTime() throws IOException {
         if (editor) {
             EquipeDAO.excluirTime(App.idTime);

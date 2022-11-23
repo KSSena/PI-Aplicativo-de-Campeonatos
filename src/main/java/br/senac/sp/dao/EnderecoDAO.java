@@ -18,6 +18,11 @@ import java.sql.SQLException;
  */
 public class EnderecoDAO {
 
+    /**
+     * Método para verificar se o endereço já existe no banco de dados
+     * @param endereco
+     * @return retorna id do endereço caso exista ou -1 caso não exista
+     */
     public static int enderecoValido(Endereco endereco) {
         ResultSet rs = null;
         Connection conexao = null;

@@ -5,7 +5,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-
 import br.senac.sp.dao.CampeonatoDAO;
 import br.senac.sp.model.Campeonato;
 import br.senac.sp.model.Equipe;
@@ -22,23 +21,31 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
-public class TelaCampeonatoController implements Initializable{
-    @FXML Text textNome;
-    @FXML TextArea textAreaDescricao;
-    @FXML Text textQuantidade;
-    @FXML Text textCategoria;
-    @FXML ImageView imageViewEditar;
-    @FXML Button buttonInscreverEquipe;
-    @FXML Button buttonExcluirCampeonato;
-    @FXML ComboBox<Equipe> comboBoxInscrever;
-    @FXML ListView<Equipe> listViewTimes;
-    
+public class TelaCampeonatoController implements Initializable {
+    @FXML
+    Text textNome;
+    @FXML
+    TextArea textAreaDescricao;
+    @FXML
+    Text textQuantidade;
+    @FXML
+    Text textCategoria;
+    @FXML
+    ImageView imageViewEditar;
+    @FXML
+    Button buttonInscreverEquipe;
+    @FXML
+    Button buttonExcluirCampeonato;
+    @FXML
+    ComboBox<Equipe> comboBoxInscrever;
+    @FXML
+    ListView<Equipe> listViewTimes;
 
-    public void carregar(int id){
+    public void carregar(int id) {
         Campeonato campeonato = CampeonatoDAO.carregarCampeonato(id);
-        
-        ArrayList<Equipe> listaEquipes =  CampeonatoDAO.carregarEquipesParticipantes(id);
-        
+
+        ArrayList<Equipe> listaEquipes = CampeonatoDAO.carregarEquipesParticipantes(id);
+
         campeonato.setListaEquipes(listaEquipes);
         textNome.setText(campeonato.getNome());
         textQuantidade.setText("Quantidade Máxima de Equipes: " + campeonato.getQtdTimes());
@@ -47,29 +54,29 @@ public class TelaCampeonatoController implements Initializable{
 
         listViewTimes.getItems().addAll(listaEquipes);
 
-        if(!CampeonatoDAO.verificarOrganizador(id, App.uuid)){
+        if (!CampeonatoDAO.verificarOrganizador(id, App.uuid)) {
             imageViewEditar.setVisible(false);
             buttonExcluirCampeonato.setVisible(false);
-        };
+        }
+        ;
 
         ArrayList<Equipe> listaEquipesAptas = CampeonatoDAO.carregarEquipesAptas(App.uuid, App.idCampeonato);
-        
-        ObservableList<Equipe> listaObservavel =  FXCollections.observableArrayList(listaEquipesAptas);
-        
-        if(listaObservavel.isEmpty()){
+
+        ObservableList<Equipe> listaObservavel = FXCollections.observableArrayList(listaEquipesAptas);
+
+        if (listaObservavel.isEmpty()) {
             comboBoxInscrever.setVisible(false);
             buttonInscreverEquipe.setVisible(false);
-        }else
+        } else
             comboBoxInscrever.setItems(listaObservavel);
-    
+
     }
 
     @FXML
     private void switchToEditarCampeonato() throws IOException {
         App.setRoot("editarCampeonato");
-        App.idCampeonato = 1;
-    }    
-    
+    }
+
     @FXML
     private void switchToTelaInicio() throws IOException {
         App.setRoot("telaInicio");
@@ -80,23 +87,32 @@ public class TelaCampeonatoController implements Initializable{
         carregar(App.idCampeonato);
     }
 
-    public void inscreverEquipe(){
-        if(comboBoxInscrever.getSelectionModel().getSelectedItem() != null){
-            CampeonatoDAO.adicionarEquipe(App.idCampeonato, comboBoxInscrever.getSelectionModel().getSelectedItem().getId());
+    /**
+     * Método para inscrever a equipe selecionada no campeonato
+     */
+    public void inscreverEquipe() {
+        if (comboBoxInscrever.getSelectionModel().getSelectedItem() != null) {
+            CampeonatoDAO.adicionarEquipe(App.idCampeonato,
+                    comboBoxInscrever.getSelectionModel().getSelectedItem().getId());
             carregar(App.idCampeonato);
         }
     }
 
     @FXML
-    private void switchToTime() throws IOException {   
-        if(listViewTimes.getSelectionModel().getSelectedItem() != null){
+    private void switchToTime() throws IOException {
+        if (listViewTimes.getSelectionModel().getSelectedItem() != null) {
             int id = listViewTimes.getSelectionModel().getSelectedItem().getId();
             App.idTime = id;
             App.setRoot("time");
         }
-    }  
+    }
 
-    public void excluirCampeonato() throws IOException{
+    /**
+     * Método para excluir o campeonato
+     * 
+     * @throws IOException
+     */
+    public void excluirCampeonato() throws IOException {
         CampeonatoDAO.excluirCampeonato(App.idCampeonato, App.uuid);
         MessageFactory.mostrarMensagem("Campeonato excluido com sucesso", AlertType.CONFIRMATION);
         switchToTelaInicio();

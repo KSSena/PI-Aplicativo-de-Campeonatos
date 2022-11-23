@@ -19,6 +19,13 @@ import java.util.ArrayList;
  */
 public class EquipeDAO {
 
+    /**
+     * Método para adicionar Equipe no banco de dados
+     * 
+     * @param equipe Objeto equipe com as informações
+     * @param uuid   UUID do usuário para adicionar como editor da equipe
+     * @return True = Sucesso e False = Falha
+     */
     public static boolean adicionar(Equipe equipe, String uuid) {
         boolean retorno;
         Connection conexao = null;
@@ -28,8 +35,10 @@ public class EquipeDAO {
         try {
             conexao = Conexao.abrirConexao();
 
-            comandoSQL1 = conexao.prepareStatement("INSERT INTO equipe(nome, qtd_membros, categoria, descricao ) VALUES (?,?, ?, ?)");
-            comandoSQL2 = conexao.prepareStatement("INSERT INTO participa(fk_equipe_id, fk_login_uuid, editor) VALUES (LAST_INSERT_ID(),?,?)");
+            comandoSQL1 = conexao.prepareStatement(
+                    "INSERT INTO equipe(nome, qtd_membros, categoria, descricao ) VALUES (?,?, ?, ?)");
+            comandoSQL2 = conexao.prepareStatement(
+                    "INSERT INTO participa(fk_equipe_id, fk_login_uuid, editor) VALUES (LAST_INSERT_ID(),?,?)");
 
             comandoSQL1.setString(1, equipe.getNome());
             comandoSQL1.setInt(2, equipe.getQtdMembros());
@@ -62,6 +71,12 @@ public class EquipeDAO {
         return retorno;
     }
 
+    /**
+     * Método para alterar Equipe no banco de dados
+     * 
+     * @param equipe Objeto equipe com as informações
+     * @return True = Sucesso e False = Falha
+     */
     public static boolean atualizar(Equipe equipe) {
         boolean retorno;
         Connection conexao = null;
@@ -69,7 +84,8 @@ public class EquipeDAO {
 
         try {
             conexao = Conexao.abrirConexao();
-            comandoSQL1 = conexao.prepareStatement("UPDATE equipe SET nome = ?, qtd_membros = ?, categoria = ?, descricao = ? WHERE id = ? ");
+            comandoSQL1 = conexao.prepareStatement(
+                    "UPDATE equipe SET nome = ?, qtd_membros = ?, categoria = ?, descricao = ? WHERE id = ? ");
 
             comandoSQL1.setString(1, equipe.getNome());
             comandoSQL1.setInt(2, equipe.getQtdMembros());
@@ -101,6 +117,12 @@ public class EquipeDAO {
         return retorno;
     }
 
+    /**
+     * Método para carregar lista de equipes em que um usuário participa
+     * 
+     * @param uuid UUID do usuario para busca
+     * @return Lista de equipes em que o usuario participa
+     */
     public static ArrayList<Equipe> carregarListaEquipes(String uuid) {
         ArrayList<Equipe> retorno = new ArrayList<>();
         ResultSet rs = null;
@@ -109,7 +131,8 @@ public class EquipeDAO {
 
         try {
             conexao = Conexao.abrirConexao();
-            comandoSQL = conexao.prepareStatement("SELECT * FROM equipe INNER JOIN participa ON equipe.id = participa.fk_equipe_id WHERE participa.fk_login_uuid = ?");
+            comandoSQL = conexao.prepareStatement(
+                    "SELECT * FROM equipe INNER JOIN participa ON equipe.id = participa.fk_equipe_id WHERE participa.fk_login_uuid = ?");
 
             comandoSQL.setString(1, uuid);
 
@@ -141,6 +164,12 @@ public class EquipeDAO {
         return retorno;
     }
 
+    /**
+     * Método para carregar informações de uma equipe no banco de dados
+     * 
+     * @param id ID da equipe
+     * @return Objeto Equipe com as informações da equipe pesquisada
+     */
     public static Equipe carregarEquipe(int id) {
         Equipe retorno;
         ResultSet rs = null;
@@ -149,7 +178,8 @@ public class EquipeDAO {
 
         try {
             conexao = Conexao.abrirConexao();
-            comandoSQL = conexao.prepareStatement("SELECT * FROM equipe INNER JOIN participa ON equipe.id = participa.fk_equipe_id WHERE equipe.id = ? AND participa.editor = true");
+            comandoSQL = conexao.prepareStatement(
+                    "SELECT * FROM equipe INNER JOIN participa ON equipe.id = participa.fk_equipe_id WHERE equipe.id = ? AND participa.editor = true");
 
             comandoSQL.setInt(1, id);
 
@@ -186,6 +216,12 @@ public class EquipeDAO {
         return retorno;
     }
 
+    /**
+     * Método para busca de equipes apartir de um parametro
+     * 
+     * @param nome Parametro de pesquisa
+     * @return Lista de equipes com o parametro pesquisado
+     */
     public static ArrayList<Equipe> buscarEquipes(String nome) {
         ArrayList<Equipe> retorno = new ArrayList<>();
         ResultSet rs = null;
@@ -226,6 +262,12 @@ public class EquipeDAO {
         return retorno;
     }
 
+    /**
+     * Método para excluir time de um banco de dados
+     * 
+     * @param Id Id do time a ser excluido
+     * @return True = Sucesso e False = Falha
+     */
     public static boolean excluirTime(int Id) {
         boolean retorno = false;
         Connection conexao = null;
@@ -245,7 +287,8 @@ public class EquipeDAO {
             comandoSQL3 = conexao.prepareStatement(" DELETE FROM equipe WHERE id = ? ");
             comandoSQL3.setInt(1, Id);
 
-            int linhasAfetadas = comandoSQL1.executeUpdate() + comandoSQL2.executeUpdate() + comandoSQL3.executeUpdate();
+            int linhasAfetadas = comandoSQL1.executeUpdate() + comandoSQL2.executeUpdate()
+                    + comandoSQL3.executeUpdate();
 
             if (linhasAfetadas >= 3) {
                 retorno = true;
@@ -273,6 +316,12 @@ public class EquipeDAO {
         return retorno;
     }
 
+    /**
+     * Método para adicionar integrante à uma equipe
+     * @param idEquipe Id da equipe a receber o integrante
+     * @param uuid UUID do membro a ser integrado
+     * @return True = Sucesso e False = Falha
+     */
     public static boolean adicionarIntegrante(int idEquipe, String uuid) {
         boolean retorno;
         Connection conexao = null;
@@ -286,7 +335,6 @@ public class EquipeDAO {
 
             comandoSQL.setInt(1, idEquipe);
             comandoSQL.setString(2, uuid);
-
 
             int linhasAfetadas = comandoSQL.executeUpdate();
             if (linhasAfetadas > 0) {
@@ -309,8 +357,13 @@ public class EquipeDAO {
         }
         return retorno;
     }
-    
-    
+
+        /**
+     * Método para excluir integrante à uma equipe
+     * @param idEquipe Id da equipe a excluir o integrante
+     * @param uuid UUID do membro a ser excluido
+     * @return True = Sucesso e False = Falha
+     */
     public static boolean excluirIntegrante(int idEquipe, String uuid) {
         boolean retorno = false;
         Connection conexao = null;

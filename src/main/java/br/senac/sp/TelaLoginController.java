@@ -22,6 +22,11 @@ public class TelaLoginController implements Initializable {
     @FXML Text textCadastrar;
     @FXML ImageView imageViewLogo;
 
+
+    /**
+     * Método para entrar no app
+     * @throws IOException
+     */
     public void logar() throws IOException{
         App.uuid = LoginDAO.login(textFieldLogin.getText(), passwordFieldSenha.getText());
         if(App.uuid == null){

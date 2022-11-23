@@ -21,6 +21,12 @@ import java.util.UUID;
  */
 public class UsuarioDAO {
 
+    /**
+     * Método para adição de um usuário no banco de dados
+     * 
+     * @param usuario Objeto usuário para adição
+     * @return True = Sucesso e False = Falha
+     */
     public static boolean adicionar(Usuario usuario) {
         boolean retorno;
         Connection conexao = null;
@@ -35,24 +41,27 @@ public class UsuarioDAO {
                 int enderecoID = EnderecoDAO.enderecoValido(usuario.getEndereco());
                 conexao = Conexao.abrirConexao();
                 comandoSQL1 = conexao.prepareStatement("INSERT INTO login(uuid, email, senha ) VALUES (?,?,MD5(?))");
-                comandoSQL2 = conexao.prepareStatement("INSERT INTO usuario(fk_login_uuid, nome, cpf, data_de_nascimento) VALUES (?,?,?,?)");
+                comandoSQL2 = conexao.prepareStatement(
+                        "INSERT INTO usuario(fk_login_uuid, nome, cpf, data_de_nascimento) VALUES (?,?,?,?)");
 
-                //Login
+                // Login
                 comandoSQL1.setString(1, uuid.toString());
                 comandoSQL1.setString(2, usuario.getEmail());
                 comandoSQL1.setString(3, usuario.getSenha());
 
-                //Usuario
+                // Usuario
                 comandoSQL2.setString(1, uuid.toString());
                 comandoSQL2.setString(2, usuario.getNome());
                 comandoSQL2.setString(3, usuario.getCpf());
                 comandoSQL2.setDate(4, new java.sql.Date(usuario.getNascimento().getTime()));
 
                 if (enderecoID == -1) {
-                    comandoSQL3 = conexao.prepareStatement("INSERT INTO endereco(logradouro, bairro,cep, uf, cidade, numero) VALUES (?,?,?,?,?,?)");
-                    comandoSQL4 = conexao.prepareStatement("INSERT INTO reside(fk_endereco_id, fk_login_uuid) VALUES (LAST_INSERT_ID(), ?)");
+                    comandoSQL3 = conexao.prepareStatement(
+                            "INSERT INTO endereco(logradouro, bairro,cep, uf, cidade, numero) VALUES (?,?,?,?,?,?)");
+                    comandoSQL4 = conexao.prepareStatement(
+                            "INSERT INTO reside(fk_endereco_id, fk_login_uuid) VALUES (LAST_INSERT_ID(), ?)");
 
-                    //Endereço
+                    // Endereço
                     comandoSQL3.setString(1, usuario.getEndereco().getLogradouro());
                     comandoSQL3.setString(2, usuario.getEndereco().getBairro());
                     comandoSQL3.setString(3, usuario.getEndereco().getCep());
@@ -60,10 +69,11 @@ public class UsuarioDAO {
                     comandoSQL3.setString(5, usuario.getEndereco().getCidade());
                     comandoSQL3.setString(6, usuario.getEndereco().getNumero());
 
-                    //Reside
+                    // Reside
                     comandoSQL4.setString(1, uuid.toString());
 
-                    int linhasAfetadas = comandoSQL1.executeUpdate() + comandoSQL2.executeUpdate() + comandoSQL3.executeUpdate() + comandoSQL4.executeUpdate();
+                    int linhasAfetadas = comandoSQL1.executeUpdate() + comandoSQL2.executeUpdate()
+                            + comandoSQL3.executeUpdate() + comandoSQL4.executeUpdate();
 
                     if (linhasAfetadas >= 4) {
                         retorno = true;
@@ -73,14 +83,16 @@ public class UsuarioDAO {
 
                 } else {
 
-                    comandoSQL3 = conexao.prepareStatement("INSERT INTO reside(fk_endereco_id, fk_login_uuid) VALUES (?, ?)");
+                    comandoSQL3 = conexao
+                            .prepareStatement("INSERT INTO reside(fk_endereco_id, fk_login_uuid) VALUES (?, ?)");
 
-                    //Reside
+                    // Reside
                     comandoSQL3.setInt(1, enderecoID);
                     comandoSQL3.setString(2, uuid.toString());
                     System.out.println("teste");
 
-                    int linhasAfetadas = comandoSQL1.executeUpdate() + comandoSQL2.executeUpdate() + comandoSQL3.executeUpdate();
+                    int linhasAfetadas = comandoSQL1.executeUpdate() + comandoSQL2.executeUpdate()
+                            + comandoSQL3.executeUpdate();
 
                     if (linhasAfetadas >= 3) {
                         retorno = true;
@@ -111,6 +123,12 @@ public class UsuarioDAO {
         return retorno;
     }
 
+    /**
+     * Método para atualização de um usuário
+     * 
+     * @param usuario Objeto usuário com as informações para alteração
+     * @return True = Sucesso e False = Falha
+     */
     public static boolean atualizar(Usuario usuario) {
         boolean retorno;
         Connection conexao = null;
@@ -123,8 +141,10 @@ public class UsuarioDAO {
                 int enderecoID = EnderecoDAO.enderecoValido(usuario.getEndereco());
                 if (enderecoID != -1) {
                     conexao = Conexao.abrirConexao();
-                    comandoSQL1 = conexao.prepareStatement("UPDATE usuario SET nome = ?, cpf = ?, data_de_nascimento = ? WHERE fk_login_uuid = ? ");
-                    comandoSQL2 = conexao.prepareStatement("UPDATE reside SET fk_endereco_id = ? WHERE fk_login_uuid = ?");
+                    comandoSQL1 = conexao.prepareStatement(
+                            "UPDATE usuario SET nome = ?, cpf = ?, data_de_nascimento = ? WHERE fk_login_uuid = ? ");
+                    comandoSQL2 = conexao
+                            .prepareStatement("UPDATE reside SET fk_endereco_id = ? WHERE fk_login_uuid = ?");
 
                     comandoSQL1.setString(1, usuario.getNome());
                     comandoSQL1.setString(2, usuario.getCpf());
@@ -143,9 +163,12 @@ public class UsuarioDAO {
                     }
                 } else {
                     conexao = Conexao.abrirConexao();
-                    comandoSQL1 = conexao.prepareStatement("UPDATE usuario SET nome = ?, cpf = ?, data_de_nascimento = ? WHERE fk_login_uuid = ? ");
-                    comandoSQL2 = conexao.prepareStatement("INSERT INTO endereco(logradouro, bairro,cep, uf, cidade, numero) VALUES (?,?,?,?,?,?)");
-                    comandoSQL3 = conexao.prepareStatement("UPDATE reside SET fk_endereco_id = LAST_INSERT_ID() WHERE fk_login_uuid = ?");
+                    comandoSQL1 = conexao.prepareStatement(
+                            "UPDATE usuario SET nome = ?, cpf = ?, data_de_nascimento = ? WHERE fk_login_uuid = ? ");
+                    comandoSQL2 = conexao.prepareStatement(
+                            "INSERT INTO endereco(logradouro, bairro,cep, uf, cidade, numero) VALUES (?,?,?,?,?,?)");
+                    comandoSQL3 = conexao.prepareStatement(
+                            "UPDATE reside SET fk_endereco_id = LAST_INSERT_ID() WHERE fk_login_uuid = ?");
 
                     comandoSQL1.setString(1, usuario.getNome());
                     comandoSQL1.setString(2, usuario.getCpf());
@@ -161,7 +184,8 @@ public class UsuarioDAO {
 
                     comandoSQL3.setString(1, usuario.getUuid());
 
-                    int linhasAfetadas = comandoSQL1.executeUpdate() + comandoSQL2.executeUpdate() + comandoSQL3.executeUpdate();
+                    int linhasAfetadas = comandoSQL1.executeUpdate() + comandoSQL2.executeUpdate()
+                            + comandoSQL3.executeUpdate();
 
                     if (linhasAfetadas >= 2) {
                         retorno = true;
@@ -189,6 +213,12 @@ public class UsuarioDAO {
         return retorno;
     }
 
+    /**
+     * Método para verificação de email valido
+     * 
+     * @param email Email para verificação
+     * @return True = Valido e False = Invalido
+     */
     public static boolean emailValido(String email) {
         ResultSet rs = null;
         Connection conexao = null;
@@ -229,6 +259,13 @@ public class UsuarioDAO {
         return retorno;
     }
 
+    /**
+     * Método para verificação de email valido
+     * 
+     * @param email Email para verificação
+     * @param uuid  UUID para verificar se o usuario já esta usando o email
+     * @return True = Valido e False = Invalido
+     */
     public static boolean emailValido(String email, String uuid) {
         ResultSet rs = null;
         Connection conexao = null;
@@ -273,6 +310,12 @@ public class UsuarioDAO {
         return retorno;
     }
 
+    /**
+     * Método para carregar informações do cartão da tela de inicio
+     * 
+     * @param uuid UUID para busca de informações
+     * @return Objeto usuario com as informações
+     */
     public static Usuario carregarCartao(String uuid) {
         ResultSet rs = null;
         Connection conexao = null;
@@ -315,6 +358,12 @@ public class UsuarioDAO {
         return retorno;
     }
 
+    /**
+     * Método para buscar informações do usuario
+     * 
+     * @param uuid UUID para busca de informações
+     * @return Objeto usuario com as informações
+     */
     public static Usuario carregarUsuario(String uuid) {
         ResultSet rs = null;
         Connection conexao = null;
@@ -365,6 +414,12 @@ public class UsuarioDAO {
         return retorno;
     }
 
+    /**
+     * Método para carregar as listas de membros de uma equipe
+     * 
+     * @param id ID do time
+     * @return Lista de membros de um time
+     */
     public static ArrayList<Usuario> carregarListaMembros(int id) {
         ArrayList<Usuario> retorno = new ArrayList<>();
         ResultSet rs = null;
@@ -373,7 +428,8 @@ public class UsuarioDAO {
 
         try {
             conexao = Conexao.abrirConexao();
-            comandoSQL = conexao.prepareStatement("SELECT * FROM participa INNER JOIN usuario ON participa.fk_login_uuid = usuario.fk_login_uuid WHERE participa.fk_equipe_id = ?");
+            comandoSQL = conexao.prepareStatement(
+                    "SELECT * FROM participa INNER JOIN usuario ON participa.fk_login_uuid = usuario.fk_login_uuid WHERE participa.fk_equipe_id = ?");
 
             comandoSQL.setInt(1, id);
 

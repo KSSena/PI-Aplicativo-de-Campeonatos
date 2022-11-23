@@ -28,6 +28,10 @@ public class BuscaController {
     @FXML
     TextField textFieldPesquisa;
 
+
+    /**
+     * Método para buscar campeonatos e equipes 
+     */
     public void buscar() {
         String pesquisa = textFieldPesquisa.getText();
         listViewCampeonatos.getItems().setAll(CampeonatoDAO.buscarCampeonatos(pesquisa));

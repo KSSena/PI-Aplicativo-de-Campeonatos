@@ -60,8 +60,14 @@ public class EditarCampeonatoController implements Initializable {
         Validator.limitadorTextArea(textAreaDescricao, 200);
     }
 
+    /**
+     * Método para alterar um campeonato
+     * 
+     * @throws IOException
+     */
     public void alterar() throws IOException {
-        if (!Validator.isEmpty(textFieldNome) && !Validator.isEmpty(textFieldCategoria) && !Validator.isEmpty(datePickerInicio) && !Validator.isEmpty(datePickerFim)) {
+        if (!Validator.isEmpty(textFieldNome) && !Validator.isEmpty(textFieldCategoria)
+                && !Validator.isEmpty(datePickerInicio) && !Validator.isEmpty(datePickerFim)) {
             Campeonato campeonato;
             campeonato = new Campeonato(App.idCampeonato);
 

@@ -52,6 +52,10 @@ public class CadastroController implements Initializable {
         App.setRoot("login");
     }
 
+    /**
+     * Método para cadastrar um usuário
+     * @throws IOException
+     */
     public void cadastrar() throws IOException {
         if (!Validator.isEmpty(textFieldEmail) && !Validator.isEmpty(passwordFieldSenha) && !Validator.isEmpty(textFieldNome)
         && !Validator.isEmpty(textFieldCPF) && Validator.isFull(textFieldCPF, 11) && !Validator.isEmpty(datePickerNascimento)) {

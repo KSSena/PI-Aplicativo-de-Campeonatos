@@ -34,6 +34,10 @@ public class CadastroTimeController implements Initializable {
         App.setRoot("telaInicio");
     }
 
+    /**
+     * Método para cadastrar um time
+     * @throws IOException
+     */
     public void cadastrar() throws IOException {
         if (!Validator.isEmpty(textFieldNome) && !Validator.isEmpty(textFieldCategorias)) {
             Equipe equipe = new Equipe();

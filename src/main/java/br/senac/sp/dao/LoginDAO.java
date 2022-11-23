@@ -17,6 +17,12 @@ import java.sql.SQLException;
  */
 public class LoginDAO {
 
+    /**
+     * Método para verificação de usuário
+     * @param email Email do usuário
+     * @param senha Senha do usuário
+     * @return UUID do usuário
+     */
     public static String login(String email, String senha) {
         ResultSet rs = null;
         Connection conexao = null;

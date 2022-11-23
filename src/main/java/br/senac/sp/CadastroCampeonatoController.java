@@ -41,6 +41,10 @@ public class CadastroCampeonatoController implements Initializable {
         App.setRoot("telaInicio");
     }
 
+    /**
+     * Método para cadastrar um campeonato
+     * @throws IOException
+     */
     public void cadastrar() throws IOException {
         if (!Validator.isEmpty(textFieldNome) && !Validator.isEmpty(textFieldCategoria) && !Validator.isEmpty(datePickerInicio) && !Validator.isEmpty(datePickerFim)) {
             Campeonato campeonato = new Campeonato();

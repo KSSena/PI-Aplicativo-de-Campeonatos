@@ -49,8 +49,14 @@ public class PerfilController implements Initializable {
     @FXML
     Button buttonCadastrar;
 
+    /**
+     * Método para alterar um usuário
+     * 
+     * @throws IOException
+     */
     public void alterar() throws IOException {
-        if (!Validator.isEmpty(textFieldEmail) && !Validator.isEmpty(passwordFieldSenha) && !Validator.isEmpty(textFieldNome) && !Validator.isEmpty(textFieldCPF) && Validator.isFull(textFieldCPF, 11) && !Validator.isEmpty(datePickerNascimento)) {
+        if (!Validator.isEmpty(textFieldEmail) && !Validator.isEmpty(textFieldNome) && !Validator.isEmpty(textFieldCPF)
+                && Validator.isFull(textFieldCPF, 11) && !Validator.isEmpty(datePickerNascimento)) {
             Usuario usuario = new Usuario(App.uuid);
             Endereco endereco = new Endereco();
 

@@ -44,6 +44,11 @@ public class EditarTimeController implements Initializable {
         textAreaDescricao.setText(equipe.getDescricao());
     }
 
+    /**
+     * Método para alterar um time
+     * 
+     * @throws IOException
+     */
     public void alterar() throws IOException {
         if (!Validator.isEmpty(textFieldNome) && !Validator.isEmpty(textFieldCategoria)) {
             Equipe equipe = new Equipe(App.idTime);
